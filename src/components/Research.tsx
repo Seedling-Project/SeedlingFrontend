@@ -2,8 +2,9 @@ import React from "react";
 
 const Research: React.FC = () => {
     return (<>
+            <h1>Table of Contents</h1>
             <div className="collapse collapse-arrow bg-base-200" id="researchGeneral">
-                <input type="radio" name="my-accordion-2" checked={true}/>
+                <input type="radio" name="my-accordion-2" />
                 <div className="collapse-title text-xl font-medium">
                     General Information
                 </div>
