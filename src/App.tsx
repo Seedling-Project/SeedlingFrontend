@@ -14,9 +14,9 @@ import Carousel from "./components/Carousel";
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: 'http://127.0.0.1:8000/api',
+  baseURL: "https://seedlingbackend-production.up.railway.app/api",
   timeout: 1000,
-  headers: {'X-Custom-Header': 'foobar'}
+  headers: { "X-Custom-Header": "foobar" },
 });
 
 interface DocumentData {
@@ -33,33 +33,35 @@ function App() {
   const [loading, setLoading] = useState(true); // For loading state
 
   useEffect(() => {
-  console.log('Fetching data...');
-  const fetchData = async () => {
-    try {
-      const response = await api.get('/document/'); 
-      console.log(response.data);
-      setDocuments(response.data);
-      // add the documents to the end of the items array
-      const itemsToAdd = response.data.map((doc: DocumentData, index: number) => (
-        <Document
-          key={index}
-          title={doc.title}
-          subtitle={doc.subtitle}
-          author={doc.author}
-          date={doc.date}
-          body={doc.body}
-        />
-      ));
-      setItems((prevItems) => [...prevItems, ...itemsToAdd]);
-      setLoading(false);
-    } catch (error) {
-      console.error('Error fetching data: ', error);
-      setLoading(false);
-    }
-  };
+    console.log("Fetching data...");
+    const fetchData = async () => {
+      try {
+        const response = await api.get("/document/");
+        console.log(response.data);
+        setDocuments(response.data);
+        // add the documents to the end of the items array
+        const itemsToAdd = response.data.map(
+          (doc: DocumentData, index: number) => (
+            <Document
+              key={index}
+              title={doc.title}
+              subtitle={doc.subtitle}
+              author={doc.author}
+              date={doc.date}
+              body={doc.body}
+            />
+          ),
+        );
+        setItems((prevItems) => [...prevItems, ...itemsToAdd]);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+        setLoading(false);
+      }
+    };
 
-  fetchData();
-}, []);
+    fetchData();
+  }, []);
 
   // Initialize an array of image URLs
   const timelineRef = useRef<HTMLDivElement>(null); // Create a ref for the Timeline component
@@ -111,7 +113,7 @@ function App() {
       author="John Doe"
       date="Jan 1, 2023"
       body="Here is some text representing the body of the document. This text can be multiple paragraphs long and contain detailed content."
-    />
+    />,
     // Add more items as you wish, even other components!
   ]);
 
@@ -185,7 +187,7 @@ function App() {
           body="Here is some text representing the body of the document. This text can be multiple paragraphs long and contain detailed content."
         />
       ),
-    }
+    },
   ];
 
   return (
@@ -223,21 +225,21 @@ function App() {
         />
         {/* ... more notes */}
 
-<div className="documents-container">
+        <div className="documents-container">
           {loading ? (
-        <p>Loading documents...</p>
-      ) : (
-        documents.map((doc, index) => (
-          <Document
-            key={index}
-            title={doc.title}
-            subtitle={doc.subtitle}
-            author={doc.author}
-            date={doc.date}
-            body={doc.body}
-          />
-        ))
-      )}
+            <p>Loading documents...</p>
+          ) : (
+            documents.map((doc, index) => (
+              <Document
+                key={index}
+                title={doc.title}
+                subtitle={doc.subtitle}
+                author={doc.author}
+                date={doc.date}
+                body={doc.body}
+              />
+            ))
+          )}
         </div>
       </div>
       <Footer />
@@ -245,3 +247,4 @@ function App() {
   );
 }
 export default App;
+
