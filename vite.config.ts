@@ -9,4 +9,8 @@ export default defineConfig({
       input: "./index.html", // Ensure this points to the correct location
     },
   },
+  server: {
+    port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
+    host: "0.0.0.0",
+  },
 });
