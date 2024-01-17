@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "daisyui/dist/full.css";
 import "./App.css";
 import "./index.css";
@@ -12,6 +12,8 @@ import Timeline from "./components/Timeline";
 import TimelineItem from "./components/TimelineItem";
 import Carousel from "./components/Carousel";
 import axios from "axios";
+import HelloWorld from "./components/HelloWorld";
+import TestDocument from "./components/TestDocument";
 
 const api = axios.create({
   baseURL: "https://seedlingbackend-production.up.railway.app/api",
@@ -42,7 +44,7 @@ function App() {
         // add the documents to the end of the items array
         const itemsToAdd = response.data.map(
           (doc: DocumentData, index: number) => (
-            <Document
+            <TestDocument
               key={index}
               title={doc.title}
               subtitle={doc.subtitle}
@@ -50,7 +52,7 @@ function App() {
               date={doc.date}
               body={doc.body}
             />
-          ),
+          )
         );
         setItems((prevItems) => [...prevItems, ...itemsToAdd]);
         setLoading(false);
@@ -193,6 +195,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <HelloWorld />
       <Hero onButtonClick={scrollToTimeline} />
       <Carousel items={items} />
       <div className="p-5"></div>
@@ -230,7 +233,7 @@ function App() {
             <p>Loading documents...</p>
           ) : (
             documents.map((doc, index) => (
-              <Document
+              <TestDocument
                 key={index}
                 title={doc.title}
                 subtitle={doc.subtitle}
@@ -247,4 +250,3 @@ function App() {
   );
 }
 export default App;
-

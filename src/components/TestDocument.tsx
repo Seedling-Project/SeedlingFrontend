@@ -27,13 +27,24 @@ const calc = (x: number, y: number, rect: DOMRect) => {
   };
 };
 
-const Document: React.FC<DocumentProps> = ({
+const TestDocument: React.FC<DocumentProps> = ({
   title,
   subtitle,
   author,
   date,
   body,
 }) => {
+  const blocks = JSON.parse(body);
+
+  const renderBlock = (block: any) => {
+    switch (block.type) {
+      case "paragraph":
+        return <div dangerouslySetInnerHTML={{ __html: block.value }} />;
+      // handle other types as needed
+      default:
+        return null;
+    }
+  };
   const ref = useRef<HTMLDivElement>(null);
   const [opacity, setOpacity] = useSpring(() => ({ value: 0 }));
   const [spotlightStyle, setSpotlightStyle] = useSpring(() => ({
@@ -81,20 +92,22 @@ const Document: React.FC<DocumentProps> = ({
         className="absolute top-0 left-0 right-0 bottom-0 rounded-lg pointer-events-none"
         style={spotlightStyle}
       />
-      <div className="relative border-2 border-gray-800 p-6 rounded">
-        <div className="text-center mb-4">
-          <h1 className="text-3xl font-bold mb-2">{title}</h1>
-          <h2 className="text-xl font-semibold">{subtitle}</h2>
-          <p className="text-md mb-4">
-            {author} - {date}
-          </p>
-        </div>
-        <div className="text-left">
-          <p>{body}</p>
-        </div>
+      <div className="text-center mb-4">
+        <h1 className="text-3xl font-bold mb-2">{title}</h1>
+        {subtitle && <h2 className="text-xl font-semibold">{subtitle}</h2>}
+        <p className="text-md mb-4">
+          {author && `${author} - `}
+          {date}
+        </p>
+      </div>
+      <div className="text-left">
+        {/* Render each block */}
+        {blocks.map((block: any, index: number) => (
+          <React.Fragment key={index}>{renderBlock(block)}</React.Fragment>
+        ))}
       </div>
     </animated.div>
   );
 };
 
-export default Document;
+export default TestDocument;
