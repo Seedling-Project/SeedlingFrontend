@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import "daisyui/dist/full.css";
 import "./App.css";
 import "./index.css";
@@ -11,15 +11,9 @@ import WideDocument from "./components/WideDocument";
 import Timeline from "./components/Timeline";
 import TimelineItem from "./components/TimelineItem";
 import Carousel from "./components/Carousel";
-import axios from "axios";
 import HelloWorld from "./components/HelloWorld";
 import TestDocument from "./components/TestDocument";
-
-const api = axios.create({
-  baseURL: "https://seedlingbackend-production.up.railway.app/api",
-  timeout: 1000,
-  headers: { "X-Custom-Header": "foobar" },
-});
+import axiosFetchData from "./components/APIHandler";
 
 interface DocumentData {
   title: string;
@@ -38,11 +32,11 @@ function App() {
     console.log("Fetching data...");
     const fetchData = async () => {
       try {
-        const response = await api.get("/document/");
-        console.log(response.data);
-        setDocuments(response.data);
+        const data = await axiosFetchData("document");
+        console.log("Data fetched: ", data);
+        setDocuments(data);
         // add the documents to the end of the items array
-        const itemsToAdd = response.data.map(
+        const itemsToAdd = data.map(
           (doc: DocumentData, index: number) => (
             <TestDocument
               key={index}
