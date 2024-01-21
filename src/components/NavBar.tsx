@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 const Navbar: React.FC = () => {
-
   return (
     <div
       style={{ padding: "20px" }}
@@ -18,7 +17,11 @@ const Navbar: React.FC = () => {
               {" "}
               {/* Use flex for inline elements */}
               <a href="/">
-                <img src="/final_logo.png" alt="Logo" className="h-12 w-12" />
+                <img
+                  src="/final_logo.png"
+                  alt="Logo"
+                  className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16 2xl:h-20 2xl:w-20"
+                />
               </a>{" "}
               {/* Your image */}
               <span className="text-xl">Seedling Education</span>{" "}
@@ -33,11 +36,7 @@ const Navbar: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a 
-                href="Blog"
-                 className="font-bold"
-                 
-                 >
+                <a href="Blog" className="font-bold">
                   Blog
                 </a>
               </li>
