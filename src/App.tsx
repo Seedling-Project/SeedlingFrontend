@@ -13,7 +13,7 @@ import TimelineItem from "./components/TimelineItem";
 import Carousel from "./components/Carousel";
 import HelloWorld from "./components/HelloWorld";
 import TestDocument from "./components/TestDocument";
-import axiosFetchData from "./components/APIHandler";
+import axiosFetchData from "./components/ApiHandler";
 
 interface DocumentData {
   title: string;
@@ -36,18 +36,16 @@ function App() {
         console.log("Data fetched: ", data);
         setDocuments(data);
         // add the documents to the end of the items array
-        const itemsToAdd = data.map(
-          (doc: DocumentData, index: number) => (
-            <TestDocument
-              key={index}
-              title={doc.title}
-              subtitle={doc.subtitle}
-              author={doc.author}
-              date={doc.date}
-              body={doc.body}
-            />
-          )
-        );
+        const itemsToAdd = data.map((doc: DocumentData, index: number) => (
+          <TestDocument
+            key={index}
+            title={doc.title}
+            subtitle={doc.subtitle}
+            author={doc.author}
+            date={doc.date}
+            body={doc.body}
+          />
+        ));
         setItems((prevItems) => [...prevItems, ...itemsToAdd]);
         setLoading(false);
       } catch (error) {
