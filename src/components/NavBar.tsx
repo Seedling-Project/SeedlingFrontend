@@ -59,13 +59,13 @@ const Navbar: React.FC = () => {
           </div>
           <div className="navbar-end">
             <div className="form-control"></div>
-            <div className="relative text-gray-400 focus-within:text-gray-600 w-full lg:w-auto">
-              <input
-                type="text"
-                placeholder="Search"
-                className="input input-bordered pl-10"
-              />
-            </div>
+            {/* <div className="relative text-gray-400 focus-within:text-gray-600 w-full lg:w-auto"> */}
+            {/*   <input */}
+            {/*     type="text" */}
+            {/*     placeholder="Search" */}
+            {/*     className="input input-bordered pl-10" */}
+            {/*   /> */}
+            {/* </div> */}
           </div>
         </div>
       </div>
