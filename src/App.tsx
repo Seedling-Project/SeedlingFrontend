@@ -14,6 +14,8 @@ import TimelineItem from "./components/TimelineItem";
 import Carousel from "./components/Carousel";
 import TestDocument from "./components/TestDocument";
 import axiosFetchData from "./components/ApiHandler";
+import Curriculum from "./components/Curriculum";
+import Research from "./components/Research";
 
 interface DocumentData {
   title: string;
@@ -236,6 +238,8 @@ function App() {
           )}
         </div>
       </div>
+      <Research />
+      <Curriculum />
       <Footer />
     </>
   );
