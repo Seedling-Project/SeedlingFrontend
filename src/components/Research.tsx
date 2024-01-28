@@ -1,55 +1,74 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axiosFetchData from "./ApiHandler";
+import TestDocument from "./TestDocument";
 
 const Research: React.FC = () => {
-    return (<>
-            <h1>Table of Contents</h1>
-            <div className="collapse collapse-arrow bg-base-200" id="researchGeneral">
-                <input type="radio" name="my-accordion-2" />
-                <div className="collapse-title text-xl font-medium">
-                    General Information
-                </div>
-                <div className="collapse-content">
-                    <p>This is supposed to be from the database</p>
-                </div>
+  const [documents, setDocuments] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDocuments = async () => {
+      setLoading(true);
+      try {
+        const data = await axiosFetchData("document");
+        console.log("Data fetched: ", data);
+        setDocuments(data.map((doc) => ({ ...doc, contentLoaded: false })));
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+      setLoading(false);
+    };
+
+    fetchDocuments();
+  }, []);
+
+  const handleAccordionClick = async (id) => {
+    if (!documents.find((doc) => doc.id === id).contentLoaded) {
+      const detailedData = await axiosFetchData(`document/${id}`);
+      setDocuments(
+        documents.map((doc) =>
+          doc.id === id ? { ...doc, ...detailedData, contentLoaded: true } : doc
+        )
+      );
+    }
+  };
+
+  return (
+    <>
+      <h1 className="text-4xl font-bold leading-tight text-gray-900">
+        Transfer Information: Table of Contents
+      </h1>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        documents.map((doc, index) => (
+          <div className="collapse collapse-arrow bg-base-200" key={index}>
+            <input
+              type="radio"
+              name="my-accordion"
+              onClick={() => handleAccordionClick(doc.id)}
+            />
+            <div className="collapse-title text-xl font-medium">
+              {doc.title}
             </div>
-            <div className="collapse collapse-arrow bg-base-200" id="researchLinks">
-                <input type="radio" name="my-accordion-2"/>
-                <div className="collapse-title text-xl font-medium">
-                    Links to Opportunities
-                </div>
-                <div className="collapse-content">
-                    <p>This is supposed to be from the database</p>
-                </div>
+            <div className="collapse-content">
+              {doc.contentLoaded ? (
+                <TestDocument
+                  title={doc.title}
+                  subtitle={doc.subtitle}
+                  author={doc.author}
+                  date={doc.date}
+                  body={doc.body}
+                />
+              ) : (
+                "Click to load content"
+              )}
             </div>
-            <div className="collapse collapse-arrow bg-base-200" id="researchEtap">
-                <input type="radio" name="my-accordion-2"/>
-                <div className="collapse-title text-xl font-medium">
-                    Guide to Using NSF Etap Website for REU Applications (etap.nsf.gov)
-                </div>
-                <div className="collapse-content">
-                    <p>This is supposed to be from the database</p>
-                </div>
-            </div>
-            <div className="collapse collapse-arrow bg-base-200" id="researchSULI">
-                <input type="radio" name="my-accordion-2"/>
-                <div className="collapse-title text-xl font-medium">
-                    SULI Application Guide
-                </div>
-                <div className="collapse-content">
-                    <p>This is supposed to be from the database</p>
-                </div>
-            </div>
-            <div className="collapse collapse-arrow bg-base-200" id="researchCold">
-                <input type="radio" name="my-accordion-2"/>
-                <div className="collapse-title text-xl font-medium">
-                    Cold Emailing Professors Guide
-                </div>
-                <div className="collapse-content">
-                    <p>This is supposed to be from the database</p>
-                </div>
-            </div>
-        </>
-    )
-}
+          </div>
+        ))
+      )}
+    </>
+  );
+};
 
 export default Research;
