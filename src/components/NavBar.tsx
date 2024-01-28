@@ -1,13 +1,8 @@
-// get axios
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
 
 const Navbar: React.FC = () => {
   return (
-    <div
-      style={{ padding: "20px" }}
-      className="navbar fixed top-0 left-0 right-0 z-50 bg-base-100"
-    >
+    <div className="navbar fixed top-0 left-0 right-0 z-50 p-[20px] bg-base-100">
       {/* Flex container for overall navbar */}
       <div className="flex justify-center w-full">
         {/* Flex container for centered content with limited width */}

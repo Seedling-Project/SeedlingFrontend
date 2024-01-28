@@ -1,5 +1,4 @@
-import { Navlink } from "react-router-dom";
-
+import { Link, Route, Routes } from "react-router-dom";
 const Prototype = () => {
   return (
     <div className="navbar p-[20px] bg-base-100">
@@ -26,19 +25,19 @@ const Prototype = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Transfer</a>
+              <Link to="/transfer">Transfer</Link>
             </li>
             <li>
-              <a>Blog</a>
+              <Link to="/blog">Blog</Link>
             </li>
             <li>
-              <a>Curriculum</a>
+              <Link to="/curriculum">Curriculum</Link>
             </li>
             <li>
-              <a>Research Opportunities</a>
+              <Link to="/research">Research Opportunities</Link>
             </li>
             <li>
-              <a>Other Opportunities</a>
+              <Link to="/Other">Other Opportunities</Link>
             </li>
           </ul>
         </div>
