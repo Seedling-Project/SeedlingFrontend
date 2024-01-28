@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import "daisyui/dist/full.css";
-import "./App.css";
-import "./index.css";
+import "../App.css";
+import "../index.css";
 import Hero from "./Hero";
 import StickyNote from "./StickyNotes";
 import Document from "./Document";
@@ -9,13 +9,8 @@ import WideDocument from "./WideDocument";
 import Timeline from "./Timeline";
 import TimelineItem from "./TimelineItem";
 import Carousel from "./Carousel";
-import axios from "axios";
-
-const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api",
-  timeout: 1000,
-  headers: { "X-Custom-Header": "foobar" },
-});
+import TestDocument from "./TestDocument";
+import axiosFetchData from "./ApiHandler";
 
 interface DocumentData {
   title: string;
@@ -25,7 +20,7 @@ interface DocumentData {
   body: string;
 }
 
-function Homepage() {
+function Home() {
   //new axios functionality, not completely set up but this is the form
   const [documents, setDocuments] = useState<DocumentData[]>([]); // For storing fetched documents
   const [loading, setLoading] = useState(true); // For loading state
@@ -34,22 +29,20 @@ function Homepage() {
     console.log("Fetching data...");
     const fetchData = async () => {
       try {
-        const response = await api.get("/document/");
-        console.log(response.data);
-        setDocuments(response.data);
+        const data = await axiosFetchData("document");
+        console.log("Data fetched: ", data);
+        setDocuments(data);
         // add the documents to the end of the items array
-        const itemsToAdd = response.data.map(
-          (doc: DocumentData, index: number) => (
-            <Document
-              key={index}
-              title={doc.title}
-              subtitle={doc.subtitle}
-              author={doc.author}
-              date={doc.date}
-              body={doc.body}
-            />
-          )
-        );
+        const itemsToAdd = data.map((doc: DocumentData, index: number) => (
+          <TestDocument
+            key={index}
+            title={doc.title}
+            subtitle={doc.subtitle}
+            author={doc.author}
+            date={doc.date}
+            body={doc.body}
+          />
+        ));
         setItems((prevItems) => [...prevItems, ...itemsToAdd]);
         setLoading(false);
       } catch (error) {
@@ -187,61 +180,59 @@ function Homepage() {
       ),
     },
   ];
+
   return (
     <>
-      <div>
-        <Hero onButtonClick={scrollToTimeline} />
-        <Carousel items={items} />
-        <div className="p-5"></div>
-        <Timeline ref={timelineRef}>
-          {timelineDetails.map((item, index) => (
-            <TimelineItem
-              key={index}
-              icon={item.icon}
-              content={item.content}
-              showConnectingLine={index < timelineDetails.length - 1} // Show connecting line except for the last item
-            />
-          ))}
-        </Timeline>
-
-        {/* ... other components or content */}
-
-        <div className="sticky-notes-container">
-          {/* Sticky Notes here */}
-          <StickyNote
-            header="Note 1"
-            body="This is the first note"
-            color="bg-red-300"
-            angle={-2}
+      <Hero onButtonClick={scrollToTimeline} />
+      <Carousel items={items} />
+      <div className="p-5"></div>
+      <Timeline ref={timelineRef}>
+        {timelineDetails.map((item, index) => (
+          <TimelineItem
+            key={index}
+            icon={item.icon}
+            content={item.content}
+            showConnectingLine={index < timelineDetails.length - 1} // Show connecting line except for the last item
           />
-          <StickyNote
-            header="Note 2"
-            body="This is the second note"
-            color="bg-blue-300"
-            angle={1}
-          />
-          {/* ... more notes */}
+        ))}
+      </Timeline>
 
-          <div className="documents-container">
-            {loading ? (
-              <p>Loading documents...</p>
-            ) : (
-              documents.map((doc, index) => (
-                <Document
-                  key={index}
-                  title={doc.title}
-                  subtitle={doc.subtitle}
-                  author={doc.author}
-                  date={doc.date}
-                  body={doc.body}
-                />
-              ))
-            )}
-          </div>
+      {/* ... other components or content */}
+
+      <div className="sticky-notes-container">
+        {/* Sticky Notes here */}
+        <StickyNote
+          header="Note 1"
+          body="This is the first note"
+          color="bg-red-300"
+          angle={-2}
+        />
+        <StickyNote
+          header="Note 2"
+          body="This is the second note"
+          color="bg-blue-300"
+          angle={1}
+        />
+        {/* ... more notes */}
+
+        <div className="documents-container">
+          {loading ? (
+            <p>Loading documents...</p>
+          ) : (
+            documents.map((doc, index) => (
+              <TestDocument
+                key={index}
+                title={doc.title}
+                subtitle={doc.subtitle}
+                author={doc.author}
+                date={doc.date}
+                body={doc.body}
+              />
+            ))
+          )}
         </div>
       </div>
     </>
   );
 }
-
-export default Homepage;
+export default Home;
