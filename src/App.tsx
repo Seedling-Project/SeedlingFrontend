@@ -3,6 +3,7 @@ import "daisyui/dist/full.css";
 import "./App.css";
 import "./index.css";
 import Navbar from "./components/NavBar";
+import NavBarPrototype from "./components/NavBarPrototype";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import StickyNote from "./components/StickyNotes";
@@ -11,7 +12,6 @@ import WideDocument from "./components/WideDocument";
 import Timeline from "./components/Timeline";
 import TimelineItem from "./components/TimelineItem";
 import Carousel from "./components/Carousel";
-import HelloWorld from "./components/HelloWorld";
 import TestDocument from "./components/TestDocument";
 import axiosFetchData from "./components/ApiHandler";
 
@@ -187,7 +187,6 @@ function App() {
   return (
     <>
       <Navbar />
-      <HelloWorld />
       <Hero onButtonClick={scrollToTimeline} />
       <Carousel items={items} />
       <div className="p-5"></div>
