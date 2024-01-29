@@ -39,12 +39,17 @@ const TestDocument: React.FC<DocumentProps> = ({
   const renderBlock = (block: any) => {
     switch (block.type) {
       case "paragraph":
-        return <div dangerouslySetInnerHTML={{ __html: block.value }} />;
-      // handle other types as needed
+        return <p dangerouslySetInnerHTML={{ __html: block.value }} />;
+      case "list-item":
+        return <li dangerouslySetInnerHTML={{ __html: block.value }} />;
+      case "unordered-list":
+        return <ul>{block.children.map(renderBlock)}</ul>;
+      // Handle other types as needed
       default:
         return null;
     }
   };
+
   const ref = useRef<HTMLDivElement>(null);
   const [opacity, setOpacity] = useSpring(() => ({ value: 0 }));
   const [spotlightStyle, setSpotlightStyle] = useSpring(() => ({
@@ -69,6 +74,9 @@ const TestDocument: React.FC<DocumentProps> = ({
 
       set(calc(e.clientX, e.clientY, rect));
     }
+    const createMarkup = (htmlString) => {
+      return { __html: htmlString };
+    };
   };
   return (
     <animated.div
