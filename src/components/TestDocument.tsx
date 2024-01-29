@@ -2,8 +2,15 @@
 //guides etc.
 //make it seem like a piece of parchment paper
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useSpring, animated } from "react-spring";
+import { MathJax, MathJaxContext } from "better-react-mathjax";
+
+const config = {
+  loader: { load: ["input/asciimath", "output/chtml"] },
+  asciimath: { delimiters: [["$$", "$$"]] },
+};
+
 interface DocumentProps {
   title: string;
   subtitle?: string;
@@ -11,7 +18,11 @@ interface DocumentProps {
   date?: string;
   body: string;
 }
-
+declare global {
+  interface Window {
+    MathJax: any; // You can replace 'any' with a more specific type if available
+  }
+}
 const calc = (x: number, y: number, rect: DOMRect) => {
   // Normalize the cursor coordinates to be from -0.5 to 0.5
   const xRel = (x - (rect.left + rect.width / 2)) / rect.width; // -0.5 when cursor at left edge, 0.5 at right edge
@@ -38,6 +49,8 @@ const TestDocument: React.FC<DocumentProps> = ({
 
   const renderBlock = (block: any) => {
     switch (block.type) {
+      case "math":
+        return <MathJax>{block.value}</MathJax>;
       case "paragraph":
         return <p dangerouslySetInnerHTML={{ __html: block.value }} />;
       case "list-item":
@@ -79,42 +92,44 @@ const TestDocument: React.FC<DocumentProps> = ({
     };
   };
   return (
-    <animated.div
-      ref={ref}
-      className="bg-white text-gray-800 max-w-3xl mx-auto my-8 p-8 rounded-lg shadow-lg"
-      style={{
-        transform: props.xys.interpolate(
-          (x, y, s) =>
-            `perspective(1000px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
-        ),
-        zIndex: 1,
-      }}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setOpacity({ value: 1 })}
-      onMouseLeave={() => {
-        set({ xys: [0, 0, 1] });
-        setSpotlightStyle({ opacity: 0 });
-      }}
-    >
+    <MathJaxContext config={config}>
       <animated.div
-        className="absolute top-0 left-0 right-0 bottom-0 rounded-lg pointer-events-none"
-        style={spotlightStyle}
-      />
-      <div className="text-center mb-4">
-        <h1 className="text-3xl font-bold mb-2">{title}</h1>
-        {subtitle && <h2 className="text-xl font-semibold">{subtitle}</h2>}
-        <p className="text-md mb-4">
-          {author && `${author} - `}
-          {date}
-        </p>
-      </div>
-      <div className="text-left">
-        {/* Render each block */}
-        {blocks.map((block: any, index: number) => (
-          <React.Fragment key={index}>{renderBlock(block)}</React.Fragment>
-        ))}
-      </div>
-    </animated.div>
+        ref={ref}
+        className="bg-white text-gray-800 max-w-3xl mx-auto my-8 p-8 rounded-lg shadow-lg"
+        style={{
+          transform: props.xys.interpolate(
+            (x, y, s) =>
+              `perspective(1000px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
+          ),
+          zIndex: 1,
+        }}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setOpacity({ value: 1 })}
+        onMouseLeave={() => {
+          set({ xys: [0, 0, 1] });
+          setSpotlightStyle({ opacity: 0 });
+        }}
+      >
+        <animated.div
+          className="absolute top-0 left-0 right-0 bottom-0 rounded-lg pointer-events-none"
+          style={spotlightStyle}
+        />
+        <div className="text-center mb-4">
+          <h1 className="text-3xl font-bold mb-2">{title}</h1>
+          {subtitle && <h2 className="text-xl font-semibold">{subtitle}</h2>}
+          <p className="text-md mb-4">
+            {author && `${author} - `}
+            {date}
+          </p>
+        </div>
+        <div className="text-left">
+          {/* Render each block */}
+          {blocks.map((block: any, index: number) => (
+            <React.Fragment key={index}>{renderBlock(block)}</React.Fragment>
+          ))}
+        </div>
+      </animated.div>
+    </MathJaxContext>
   );
 };
 
