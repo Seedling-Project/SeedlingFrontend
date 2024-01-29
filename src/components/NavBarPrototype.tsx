@@ -1,4 +1,7 @@
-import { Navlink } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import Curriculum from "./Curriculum";
+import Research from "./Research";
 
 const Prototype = () => {
   return (
@@ -21,26 +24,35 @@ const Prototype = () => {
               />
             </svg>
           </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a>Transfer</a>
-            </li>
-            <li>
-              <a>Blog</a>
-            </li>
-            <li>
-              <a>Curriculum</a>
-            </li>
-            <li>
-              <a>Research Opportunities</a>
-            </li>
-            <li>
-              <a>Other Opportunities</a>
-            </li>
-          </ul>
+          <nav>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <Link to="/transfer">Transfer</Link>
+              </li>
+              <li>
+                <Link to="/blog">Blog</Link>
+              </li>
+              <li>
+                <Link to="/curriculum">Curriculum</Link>
+              </li>
+              <li>
+                <Link to="/research">Research Opportunities</Link>
+              </li>
+              <li>
+                <Link to="/other">Other Opportunities</Link>
+              </li>
+            </ul>
+          </nav>
+          <Routes>
+            <Route path="/transfer" element={<Home />} />
+            <Route path="/blog" element={<Home />} />
+            <Route path="/curriculum" element={<Curriculum />} />
+            <Route path="/research" element={<Research />} />
+            <Route path="/other" element={<Home />} />
+          </Routes>
         </div>
       </div>
       <div className="navbar-center">
