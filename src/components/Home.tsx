@@ -3,9 +3,7 @@ import "daisyui/dist/full.css";
 import "../App.css";
 import "../index.css";
 import Hero from "./Hero";
-import StickyNote from "./StickyNotes";
 import Document from "./Document";
-import WideDocument from "./WideDocument";
 import Timeline from "./Timeline";
 import TimelineItem from "./TimelineItem";
 import Carousel from "./Carousel";
@@ -68,37 +66,8 @@ function Home() {
     }
   };
   const [items, setItems] = useState([
-    <WideDocument
-      key="1"
-      title="Things that you should do immediately after you come to MJC"
-      author="Kyle Zheng"
-      date="Jan 8, 2024"
-      body="
-      - Consider now whether you want to transfer to CSU, UC, or private in addition to your major because it affects class choices.
-
-      - Check out assist.org and schedule a meeting with a counselor regarding your educational plan for your transfer.
-            There are guides in the blog section on how to navigate assist.org and schedule a counselor meeting.
-
-      - There are guides for the activities list and essays for UCs and Privates in the Blog section.
-
-      - Do you want to do research? Yes, first years are allowed to do it through REUs and Honors.
-            This is discussed in greater detail in Research Opportunities above.
-
-      - Do you want to participate in clubs or start a new organization at MJC? You can, it looks great on resumes.
-            This is discussed in Miscellaneous Opportunities above.
-
-      - Do you need additional help for calculus, physics, or some other difficult class? Check out the Curriculum section.
-      "
-    />,
-    <WideDocument
-      key="2"
-      title="SECOND Document Title"
-      author="John Doe"
-      date="Jan 1, 2023"
-      body="Here is some text representing the body of the document. This text can be multiple paragraphs long and contain detailed content."
-    />,
     <Document
-      key="3"
+      key="1"
       title="THIRD Document Title"
       subtitle="This is a subtitle"
       author="John Doe"
@@ -184,7 +153,6 @@ function Home() {
   return (
     <>
       <Hero onButtonClick={scrollToTimeline} />
-      <Carousel items={items} />
       <div className="p-5"></div>
       <Timeline ref={timelineRef}>
         {timelineDetails.map((item, index) => (
@@ -199,38 +167,21 @@ function Home() {
 
       {/* ... other components or content */}
 
-      <div className="sticky-notes-container">
-        {/* Sticky Notes here */}
-        <StickyNote
-          header="Note 1"
-          body="This is the first note"
-          color="bg-red-300"
-          angle={-2}
-        />
-        <StickyNote
-          header="Note 2"
-          body="This is the second note"
-          color="bg-blue-300"
-          angle={1}
-        />
-        {/* ... more notes */}
-
-        <div className="documents-container">
-          {loading ? (
-            <p>Loading documents...</p>
-          ) : (
-            documents.map((doc, index) => (
-              <TestDocument
-                key={index}
-                title={doc.title}
-                subtitle={doc.subtitle}
-                author={doc.author}
-                date={doc.date}
-                body={doc.body}
-              />
-            ))
-          )}
-        </div>
+      <div className="documents-container">
+        {loading ? (
+          <p>Loading documents...</p>
+        ) : (
+          documents.map((doc, index) => (
+            <TestDocument
+              key={index}
+              title={doc.title}
+              subtitle={doc.subtitle}
+              author={doc.author}
+              date={doc.date}
+              body={doc.body}
+            />
+          ))
+        )}
       </div>
     </>
   );

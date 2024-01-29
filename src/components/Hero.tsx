@@ -4,7 +4,7 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ onButtonClick }) => {
   return (
     <div
-      className="hero bg-base-200"
+      className="hero bg-base-200 rounded-lg"
       style={{
         display: "flex",
         alignItems: "flex-start",
