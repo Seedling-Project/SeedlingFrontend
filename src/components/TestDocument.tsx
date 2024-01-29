@@ -73,7 +73,7 @@ const TestDocument: React.FC<DocumentProps> = ({
   return (
     <animated.div
       ref={ref}
-      className="bg-white text-gray-800 max-w-xl mx-auto my-8 p-8 rounded-lg shadow-lg"
+      className="bg-white text-gray-800 max-w-3xl mx-auto my-8 p-8 rounded-lg shadow-lg"
       style={{
         transform: props.xys.interpolate(
           (x, y, s) =>

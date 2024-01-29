@@ -54,7 +54,6 @@ const Research: React.FC = () => {
             <div className="collapse-content">
               {doc.contentLoaded ? (
                 <TestDocument
-                  title={doc.title}
                   subtitle={doc.subtitle}
                   author={doc.author}
                   date={doc.date}

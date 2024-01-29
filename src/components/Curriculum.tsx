@@ -21,8 +21,8 @@ const Curriculum: React.FC = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            <tr>
-              <th>1</th>
+            <tr className="hover">
+              <td>1</td>
               <td>MATH-161: Trigonometry and MATH-162: Precalculus</td>
               <td>TBD</td>
             </tr>
@@ -33,27 +33,27 @@ const Curriculum: React.FC = () => {
               <td>TBD</td>
             </tr>
             {/* row 3 */}
-            <tr>
+            <tr className="hover">
               <th>3</th>
               <td>MATH-172: Calculus II</td>
               <td>TBD</td>
             </tr>
-            <tr>
+            <tr className="hover">
               <th>4</th>
               <td>MATH-173: Calculus III and IV</td>
               <td>TBD</td>
             </tr>
-            <tr>
+            <tr className="hover">
               <th>5</th>
               <td>MATH-191: Linear Algebra</td>
               <td>TBD</td>
             </tr>
-            <tr>
+            <tr className="hover">
               <th>6</th>
               <td>MATH-193: Ordinary Differential Equations</td>
               <td>TBD</td>
             </tr>
-            <tr>
+            <tr className="hover">
               <th>7</th>
               <td>MATH-134: Elementary Statistics</td>
               <td>TBD</td>
@@ -68,7 +68,7 @@ const Curriculum: React.FC = () => {
         <table className="table">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="hover">
               <th></th>
               <th>Name</th>
               <th>Pass Rate</th>
@@ -76,7 +76,7 @@ const Curriculum: React.FC = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            <tr>
+            <tr className="hover">
               <th>1</th>
               <td>PHYS-101: Mechanics</td>
               <td>TBD</td>
@@ -88,7 +88,7 @@ const Curriculum: React.FC = () => {
               <td>TBD</td>
             </tr>
             {/* row 3 */}
-            <tr>
+            <tr className="hover">
               <th>3</th>
               <td>PHYS-103: Electricity, Magnetism, and Modern Physics</td>
               <td>TBD</td>
@@ -103,7 +103,7 @@ const Curriculum: React.FC = () => {
         <table className="table">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="hover">
               <th></th>
               <th>Name</th>
               <th>Pass Rate</th>
@@ -111,7 +111,7 @@ const Curriculum: React.FC = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            <tr>
+            <tr className="hover">
               <th>1</th>
               <td>CHEM-101: Chemistry I</td>
               <td>less than 50%</td>
@@ -123,12 +123,12 @@ const Curriculum: React.FC = () => {
               <td>TBD</td>
             </tr>
             {/* row 3 */}
-            <tr>
+            <tr className="hover">
               <th>3</th>
               <td>CHEM-112: Organic Chemistry I</td>
               <td>TBD</td>
             </tr>
-            <tr>
+            <tr className="hover">
               <th>4</th>
               <td>CHEM-113: Organic Chemistry II</td>
               <td>TBD</td>
@@ -143,7 +143,7 @@ const Curriculum: React.FC = () => {
         <table className="table">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="hover">
               <th></th>
               <th>Name</th>
               <th>Pass Rate</th>
@@ -151,7 +151,7 @@ const Curriculum: React.FC = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            <tr>
+            <tr className="hover">
               <th>1</th>
               <td>BIO-101: Biological Principles</td>
               <td>TBD</td>
@@ -163,7 +163,7 @@ const Curriculum: React.FC = () => {
               <td>TBD</td>
             </tr>
             {/* row 3 */}
-            <tr>
+            <tr className="hover">
               <th>3</th>
               <td>ZOOL-101: General Zoology</td>
               <td>TBD</td>
