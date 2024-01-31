@@ -18,19 +18,25 @@ const Prototype = () => {
           <a>Curriculum</a>
         </li>
         <li><a>Research</a></li>
+        <li><a> Opportunities</a></li>
+   
 
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl lg:text-center ">Seedling Education</a>
+    <a className="btn btn-ghost text-xl lg:text-center hidden md:unhidden lg:block" >Seedling Education</a> 
 
-    <a href="/" className = "min-w-24 min-h-24 w-24 h-24">
+    <a href="/" className = "min-w-24 min-h-24 w-24 h-24 ">
                 <img
                   src="/final_logo.png"
-                  alt="Logo"
-                  width = "100px"
+                  alt="Logo-seedling"
+                  width = "80px"
+                 
                   
                   />
               </a>
+     <button className="btn btn-ghost btn-circle lg:hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+    </button>
   </div>
   
 <div className="navbar-center hidden lg:flex">
@@ -38,8 +44,14 @@ const Prototype = () => {
       <li><a>Transfer</a></li>
       <li><a>Curriculum</a></li>
       <li><a>Research</a></li>
-    </ul>
+      <li><a> Opportunities</a></li>
+    </ul>  
+    <button className="btn btn-ghost btn-circle ">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+    </button>
+    
   </div>
+    
 </div>
   
   
