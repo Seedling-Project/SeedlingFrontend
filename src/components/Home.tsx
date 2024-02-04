@@ -9,6 +9,7 @@ import TimelineItem from "./TimelineItem";
 import Carousel from "./Carousel";
 import TestDocument from "./TestDocument";
 import axiosFetchData from "./ApiHandler";
+import RenderBlock from "./RenderBlock";
 
 interface DocumentData {
   title: string;
@@ -51,6 +52,15 @@ function Home() {
 
     fetchData();
   }, []);
+
+  const renderBlocks = () => {
+    if (loading) {
+      return <p>Loading Content...</p>;
+    }
+    return documents.map((block, index) => (
+      <RenderBlock key={index} block={block} />
+    ));
+  };
 
   // Initialize an array of image URLs
   const timelineRef = useRef<HTMLDivElement>(null); // Create a ref for the Timeline component
@@ -182,6 +192,7 @@ function Home() {
             />
           ))
         )}
+        {renderBlocks()}
       </div>
     </>
   );
