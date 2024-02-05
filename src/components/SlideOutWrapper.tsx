@@ -1,55 +1,100 @@
-import React, { useRef, useEffect, useState } from "react";
-import { useSpring, animated } from "react-spring";
+import React, { useRef, useEffect, useState } from 'react'
+import { useSpring, animated } from 'react-spring'
+
+// Custom hook to detect current breakpoint based on window width
+const useBreakpoint = () => {
+  const [size, setSize] = useState('sm')
+
+  useEffect(() => {
+    const updateSize = () => {
+      if (window.innerWidth < 640) setSize('sm')
+      else if (window.innerWidth >= 640 && window.innerWidth < 855)
+        setSize('md')
+      else if (window.innerWidth >= 855 && window.innerWidth < 950)
+        setSize('md-plus')
+      else if (window.innerWidth >= 950 && window.innerWidth < 1024)
+        setSize('lg')
+      else if (window.innerWidth >= 1024 && window.innerWidth < 1125)
+        setSize('0.5xl')
+      else if (window.innerWidth >= 1024 && window.innerWidth < 1200)
+        setSize('xl')
+      else if (window.innerWidth >= 1200 && window.innerWidth < 1240)
+        setSize('1.5xl')
+      else if (window.innerWidth >= 1240) setSize('2xl')
+    }
+    window.addEventListener('resize', updateSize)
+    updateSize() // Call once to set initial size
+    return () => window.removeEventListener('resize', updateSize)
+  }, [])
+
+  return size
+}
 
 interface SlideOutWrapperProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const SlideOutWrapper: React.FC<SlideOutWrapperProps> = ({ children }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+  const breakpoint = useBreakpoint() // Use the custom hook
 
+  // Adjusting the slideOutProps based on the breakpoint
   const slideOutProps = useSpring({
     opacity: isVisible ? 1 : 0,
-    transform: isVisible ? "translate3d(50%,0,0)" : "translate3d(-5%,0,0)",
+    transform: isVisible
+      ? `translate3d(${
+          breakpoint === 'sm'
+            ? '1%'
+            : breakpoint === 'md'
+              ? '1%'
+              : breakpoint === 'md-plus'
+                ? '12%'
+                : breakpoint === 'lg'
+                  ? '20%'
+                  : breakpoint === '0.5xl'
+                    ? '30%'
+                    : breakpoint === 'xl'
+                      ? '40%'
+                      : breakpoint === '1.5xl'
+                        ? '40%'
+                        : breakpoint === '2xl'
+                          ? '50%'
+                          : '60%' // New value for 3xl breakpoint
+        },0,0)`
+      : 'translate3d(-5%,0,0)',
     config: { duration: 700 },
-  });
+  })
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // Adjust the ratio to control when the animation should trigger
-          setIsVisible(entry.isIntersecting);
-
-          // Optional: Reset animation when element is not visible
-          if (!entry.isIntersecting) {
-            // Reset the animation so it can trigger again when visible
-            setIsVisible(false);
-          }
-        });
+          setIsVisible(entry.isIntersecting)
+        })
       },
       {
-        // Adjust rootMargin to control the vertical center alignment, e.g., '-50% 0px -50% 0px'
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: [0, 0.5, 1], // Multiple thresholds for entering and leaving the center
-      }
-    );
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: [0, 0.5, 1],
+      },
+    )
 
     if (ref.current) {
-      observer.observe(ref.current);
+      observer.observe(ref.current)
     }
 
     return () => {
-      observer.disconnect();
-    };
-  }, []);
+      if (ref.current) {
+        observer.disconnect()
+      }
+    }
+  }, [])
 
   return (
     <animated.div ref={ref} style={slideOutProps} className="content-slide">
       {children}
     </animated.div>
-  );
-};
+  )
+}
 
-export default SlideOutWrapper;
+export default SlideOutWrapper
