@@ -1,30 +1,55 @@
-# React + TypeScript + Vite
+# SeedlingEducation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Democratizing education is the foremost goal of society.
+But, democratic education also means democratizing teaching.
+The Seedling Project utilizes the wisdom and knowledge gathered
+by the masses (students) to create a library of high-quality
+resources for future generations of students to benefit from.
+We enrich our knowledge by democratizing teaching not only
+because the resources created through the process are high-quality
+and equitable, but also because the process itself (of teaching and
+creation) develops the character of each who partakes in its fruit.
 
-Currently, two official plugins are available:
+Each person with their own unique and diverse background, especially in
+community colleges can contribute their experiences in education,
+life, research, and more with other students. Who is more qualified
+to answer unusually specific questions about education than those
+who are actively navigating its challenges?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Democratize education, improve academic outcomes, and pave the way for
+our future scientists and engineers.
 
-## Expanding the ESLint configuration
+## Documentation Link
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+https://seedling-project.github.io/Seedlingmkdocs/
 
-- Configure the top-level `parserOptions` property like this:
+## Github Contributions
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
+At this moment, there are two branches: main and frontend.
+Clone the repository.
+Set the main to your upstream as such:
+git branch --set-upstream-to=origin/main <variable_name>.
+the <variable_name> can be found with the git branch
+command.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Setting Upstream:
+
+Setting an upstream branch establishes a link between your
+current branch and a specified remote branch.
+This is useful when you want to track changes from a
+specific remote branch in your current branch
+The upstream setting merely establishes a default remote branch
+that your local branch will interact with when you run commands
+like git pull or git merge.
+
+### Pulling:
+
+git pull: is a command that fetches the latest changes from the remote
+repository and merges them into your current branch.
+It essentially combines git fetch and git merge into a single
+command.
+
+### Fetching:
+
+git fetch: is a command that retrieves the latest changes from the remote repository without merging them into your current branch.
+This allows you to review the changes before deciding whether to merge them.
