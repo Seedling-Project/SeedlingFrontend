@@ -9,14 +9,34 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 })
 
+// Set the endpoint type based on the type provided
+const setEndpointType = (type, id) => {
+  let endpoint_type = ''
+  switch (type) {
+    case 'wagtailcore.Page':
+      endpoint_type = `/pages/${id}`
+      return endpoint_type
+    case 'wagtailimages.Image':
+      endpoint_type = `/images/${id}`
+      return endpoint_type
+    case 'wagtaildocs.Documents':
+      endpoint_type = `/documents/${id}`
+      return endpoint_type
+    default:
+      console.error('Invalid type provided: ', type)
+      return []
+  }
+}
+
 // Function to fetch data from Wagtail's v2 API endpoints
 // type: "pages", "images", or "documents"
 export default async function axiosFetchData(
-  type: 'pages' | 'images' | 'documents',
+  type: 'wagtailcore.Page' | 'wagtailimages.Image' | 'wagtaildocs.Documents',
   id?: number,
 ) {
   try {
-    const endpoint = id ? `/${type}/${id}/` : `/${type}/` // If an ID is provided, fetch a specific item, otherwise fetch all items of the type
+    const endpoint = setEndpointType(type, id)
+    console.log('Fetching data from: ', endpoint)
     const response = await api.get(endpoint)
     return response.data // Return the data from the response
   } catch (error) {

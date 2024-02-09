@@ -18,23 +18,28 @@ interface Block {
 
 function Home() {
   //new axios functionality, not completely set up but this is the form
-  const [blocks, setBlocks] = useState<Block[]>([]) // For storing fetched documents
-  const [loading, setLoading] = useState(true) // For loading state
   const [currentPage, setCurrentPage] = useState(null)
   const [currentImage, setCurrentImage] = useState(null)
   const [currentDocument, setCurrentDocument] = useState(null)
+  const [currentLoading, setLoading] = useState(true)
 
   // Function to fetch the first item or next item in a category
   const fetchData = async (type, nextId) => {
-    setLoading(true)
+    console.log('We are now fetching data, in the fetchData function')
     try {
       const data = await axiosFetchData(type, nextId) // Modified to fetch by type and optional nextId
+      console.log('Data is: ', data)
+      console.log(
+        'Data media link',
+        // data.meta.download_url ? data.meta.download_url : data,
+      )
       // Assuming data structure contains items array for simplicity
-      if (data && data.items && data.items.length > 0) {
+      if (data && data.length > 0) {
         const item = data.items[0] // Get the first item
-        if (type === 'pages') setCurrentPage(item)
-        if (type === 'images') setCurrentImage(item)
-        if (type === 'documents') setCurrentDocument(item)
+        console.log('type is :', item)
+        if (type === data.meta.type) setCurrentPage()
+        if (type === data.meta.type) setCurrentImage(item)
+        if (type === data.meta.type) setCurrentDocument(item)
       }
       setLoading(false)
     } catch (error) {
@@ -44,9 +49,9 @@ function Home() {
   }
 
   useEffect(() => {
-    fetchData('pages', 2) // Initially load the first page
-    fetchData('images', 2) // Initially load the first image
-    fetchData('documents', 2) // Initially load the first document
+    fetchData('wagtailcore.Page', 2) // Initially load the first page
+    fetchData('wagtailimages.Image', 2) // Initially load the first image
+    fetchData('wagtaildocs.Documents', 1) // Initially load the first document
   }, [])
 
   const renderBlocks = () => {
