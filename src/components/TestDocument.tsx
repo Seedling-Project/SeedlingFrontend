@@ -45,7 +45,7 @@ const TestDocument: React.FC<DocumentProps> = ({
   date,
   body,
 }) => {
-  const blocks = JSON.parse(body);
+  const blocks = body;
 
   const renderBlock = (block: any) => {
     switch (block.type) {

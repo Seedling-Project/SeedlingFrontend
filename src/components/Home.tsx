@@ -4,11 +4,11 @@ import '../App.css'
 import '../index.css'
 import Hero from './Hero'
 import Document from './Document'
+import { axiosFetchData } from './ApiHandler'; 
 import Timeline from './Timeline'
 import TimelineItem from './TimelineItem'
 import Carousel from './Carousel'
 import TestDocument from './TestDocument'
-import axiosFetchData from './ApiHandler'
 import RenderBlock from './RenderBlock'
 
 interface Block {
@@ -17,58 +17,39 @@ interface Block {
 }
 
 function Home() {
-  //new axios functionality, not completely set up but this is the form
   const [currentPage, setCurrentPage] = useState(null)
   const [currentImage, setCurrentImage] = useState(null)
   const [currentDocument, setCurrentDocument] = useState(null)
   const [currentLoading, setLoading] = useState(true)
 
-  // Function to fetch the first item or next item in a category
-  const fetchData = async (type, nextId) => {
-    console.log('We are now fetching data, in the fetchData function')
-    try {
-      const data = await axiosFetchData(type, nextId) // Modified to fetch by type and optional nextId
-      console.log('Data is: ', data)
-      console.log(
-        'Data media link',
-        data.meta.download_url ? data.meta.download_url : data,
-      )
-      // Assuming data structure contains items array for simplicity
-      if (data && data.length > 0) {
-        const item = data.items[0] // Get the first item
-        console.log('type is :', item)
-        if (type === data.meta.type) setCurrentPage(item)
-        if (type === data.meta.type) setCurrentImage(item)
-        if (type === data.meta.type) setCurrentDocument(item)
-      }
-      setLoading(false)
-    } catch (error) {
-      console.error('Error fetching data:', error)
-      setLoading(false)
-    }
-  }
-
   useEffect(() => {
-    fetchData('core.ContentBlock', 3) // Initially load the first page
-    // fetchData('wagtailimages.Image', 2) // Initially load the first image
-    // fetchData('wagtaildocs.Documents', 12) // Initially load the first document
-  }, [])
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const pageData = await axiosFetchData('core.ContentBlock', 3);
+        setCurrentPage(pageData);
+        // If you need to fetch images and documents similarly, do it here or in separate calls
+      } catch (error) {
+        console.error('Failed to fetch data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const renderBlocks = () => {
-    if (loading) {
-      return <p>Loading Content...</p>
-    }
-    return blocks.map((block, index) => (
-      <RenderBlock key={index} block={block} />
-    ))
-  }
+    fetchData();
+  }, []);
 
   // a click handler to load the next page (need to track and update IDs accordingly)
-  const handleNextPage = () => {
+  const handleNextPage = async () => {
     if (currentPage) {
-      fetchData('pages', currentPage.id + 1)
+      try {
+        const nextPageData = await axiosFetchData('core.ContentBlock', currentPage.id + 1);
+        setCurrentPage(nextPageData);
+      } catch (error) {
+        console.error('Failed to fetch next page:', error);
+      }
     }
-  }
+  };
 
   // Initialize an array of image URLs
   const timelineRef = useRef<HTMLDivElement>(null) // Create a ref for the Timeline component
@@ -192,19 +173,14 @@ function Home() {
         )}
         {/* Similar rendering for images and documents */}
       </div>
-      {currentImage && (
-        <div>
-          {/* Assuming 'url' is the property where the image URL is stored */}
-          <img src={currentImage.url} alt="Current Image" />
-        </div>
-      )}
-      {currentDocument && (
-        <div>
-          {/* Assuming 'url' is the property where the document URL is stored */}
-          <a href={currentDocument.url}>View Document</a>
-        </div>
-      )}
-
+      {currentPage &&
+      <TestDocument
+                  subtitle={currentPage.subtitle}
+                  author={currentPage.author}
+                  date={currentPage.date}
+                  body={currentPage.body}
+                />}
+                
       {/* ... other components or content */}
     </>
   )
