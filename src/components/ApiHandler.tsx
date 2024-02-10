@@ -1,39 +1,30 @@
-// a component for handling API calls using axios
-
+// Import axios to make HTTP requests
 import axios from 'axios'
 
-// Create an axios instance
+// Create an axios instance with predefined base URL and headers
 const api = axios.create({
   baseURL: 'https://seedlingbackend-production.up.railway.app/api/v2',
   timeout: 10000, // Adjusted timeout for more flexibility
   headers: { 'Content-Type': 'application/json' },
 })
 
-// Set the endpoint type based on the type provided
+// Helper function to determine the endpoint based on the provided type and ID
 const setEndpointType = (type, id) => {
-  let endpoint_type = ''
   switch (type) {
     case 'core.ContentBlock':
-      endpoint_type = `/pages/${id}`
-      return endpoint_type
+      return `/pages/${id}`
     case 'wagtailimages.Image':
-      endpoint_type = `/images/${id}`
-      return endpoint_type
+      return `/images/${id}`
     case 'wagtaildocs.Documents':
-      endpoint_type = `/documents/${id}`
-      return endpoint_type
+      return `/documents/${id}`
     default:
       console.error('Invalid type provided: ', type)
-      return []
+      throw new Error('Invalid endpoint type provided')
   }
 }
 
-// Function to fetch data from Wagtail's v2 API endpoints
-// type: "pages", "images", or "documents"
-export default async function axiosFetchData(
-  type: 'core.ContentBlock' | 'wagtailimages.Image' | 'wagtaildocs.Documents',
-  id?: number,
-) {
+// Utility function to fetch data from the API
+export async function axiosFetchData(type, id) {
   try {
     const endpoint = setEndpointType(type, id)
     console.log('Fetching data from: ', endpoint)
@@ -41,6 +32,6 @@ export default async function axiosFetchData(
     return response.data // Return the data from the response
   } catch (error) {
     console.error('Error fetching data: ', error)
-    return [] // Return an empty array to prevent further errors
+    throw error // Rethrow the error to be handled by the caller
   }
 }

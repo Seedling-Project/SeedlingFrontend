@@ -1,37 +1,39 @@
-import React, { useState, useEffect } from "react";
-import axiosFetchData from "./ApiHandler";
-import TestDocument from "./TestDocument";
+import React, { useState, useEffect } from 'react'
+import { axiosFetchData } from './ApiHandler'
+import TestDocument from './TestDocument'
 
 const Research: React.FC = () => {
-  const [documents, setDocuments] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [documents, setDocuments] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchDocuments = async () => {
-      setLoading(true);
+      setLoading(true)
       try {
-        const data = await axiosFetchData("document");
-        console.log("Data fetched: ", data);
-        setDocuments(data.map((doc) => ({ ...doc, contentLoaded: false })));
+        const data = await axiosFetchData('core.ContentBlock', 3)
+        console.log('Data fetched: ', data)
+        setDocuments(data.map((doc) => ({ ...doc, contentLoaded: false })))
       } catch (error) {
-        console.error("Error fetching data: ", error);
+        console.error('Error fetching data: ', error)
       }
-      setLoading(false);
-    };
+      setLoading(false)
+    }
 
-    fetchDocuments();
-  }, []);
+    fetchDocuments()
+  }, [])
 
   const handleAccordionClick = async (id) => {
     if (!documents.find((doc) => doc.id === id).contentLoaded) {
-      const detailedData = await axiosFetchData(`document/${id}`);
+      const detailedData = await axiosFetchData(`document/${id}`)
       setDocuments(
         documents.map((doc) =>
-          doc.id === id ? { ...doc, ...detailedData, contentLoaded: true } : doc
-        )
-      );
+          doc.id === id
+            ? { ...doc, ...detailedData, contentLoaded: true }
+            : doc,
+        ),
+      )
     }
-  };
+  }
 
   return (
     <>
@@ -60,14 +62,14 @@ const Research: React.FC = () => {
                   body={doc.body}
                 />
               ) : (
-                "Click to load content"
+                'Click to load content'
               )}
             </div>
           </div>
         ))
       )}
     </>
-  );
-};
+  )
+}
 
-export default Research;
+export default Research
