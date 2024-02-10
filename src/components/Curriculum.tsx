@@ -24,34 +24,34 @@ const Curriculum: React.FC = () => {
             <tr className="hover">
               <td>1</td>
               <td>MATH-161: Trigonometry and MATH-162: Precalculus</td>
-              <td>TBD</td>
+              <td>46% and 57%</td>
             </tr>
             {/* row 2 */}
             <tr className="hover">
               <th>2</th>
               <td>MATH-171: Calculus I</td>
-              <td>TBD</td>
+              <td>57%</td>
             </tr>
             {/* row 3 */}
             <tr className="hover">
               <th>3</th>
               <td>MATH-172: Calculus II</td>
-              <td>TBD</td>
+              <td>70%</td>
             </tr>
             <tr className="hover">
               <th>4</th>
               <td>MATH-173: Calculus III and IV</td>
-              <td>TBD</td>
+              <td>54%</td>
             </tr>
             <tr className="hover">
               <th>5</th>
               <td>MATH-191: Linear Algebra</td>
-              <td>TBD</td>
+              <td>67%</td>
             </tr>
             <tr className="hover">
               <th>6</th>
               <td>MATH-193: Ordinary Differential Equations</td>
-              <td>TBD</td>
+              <td>67%</td>
             </tr>
             <tr className="hover">
               <th>7</th>
@@ -79,19 +79,19 @@ const Curriculum: React.FC = () => {
             <tr className="hover">
               <th>1</th>
               <td>PHYS-101: Mechanics</td>
-              <td>TBD</td>
+              <td>67%</td>
             </tr>
             {/* row 2 */}
             <tr className="hover">
               <th>2</th>
               <td>PHYS-102: Waves, Thermodynamics, Optics</td>
-              <td>TBD</td>
+              <td>79%</td>
             </tr>
             {/* row 3 */}
             <tr className="hover">
               <th>3</th>
               <td>PHYS-103: Electricity, Magnetism, and Modern Physics</td>
-              <td>TBD</td>
+              <td>77%</td>
             </tr>
           </tbody>
         </table>
@@ -114,13 +114,13 @@ const Curriculum: React.FC = () => {
             <tr className="hover">
               <th>1</th>
               <td>CHEM-101: Chemistry I</td>
-              <td>less than 50%</td>
+              <td>43%</td>
             </tr>
             {/* row 2 */}
             <tr className="hover">
               <th>2</th>
               <td>CHEM-102: Chemistry II</td>
-              <td>TBD</td>
+              <td>51.28%</td>
             </tr>
             {/* row 3 */}
             <tr className="hover">
@@ -131,7 +131,7 @@ const Curriculum: React.FC = () => {
             <tr className="hover">
               <th>4</th>
               <td>CHEM-113: Organic Chemistry II</td>
-              <td>TBD</td>
+              <td>93%</td>
             </tr>
           </tbody>
         </table>
@@ -154,13 +154,13 @@ const Curriculum: React.FC = () => {
             <tr className="hover">
               <th>1</th>
               <td>BIO-101: Biological Principles</td>
-              <td>TBD</td>
+              <td>82%</td>
             </tr>
             {/* row 2 */}
             <tr className="hover">
               <th>2</th>
               <td>BOT-101: General Botany</td>
-              <td>TBD</td>
+              <td>78%</td>
             </tr>
             {/* row 3 */}
             <tr className="hover">
