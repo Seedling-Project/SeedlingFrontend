@@ -31,13 +31,13 @@ function Home() {
       console.log('Data is: ', data)
       console.log(
         'Data media link',
-        // data.meta.download_url ? data.meta.download_url : data,
+        data.meta.download_url ? data.meta.download_url : data,
       )
       // Assuming data structure contains items array for simplicity
       if (data && data.length > 0) {
         const item = data.items[0] // Get the first item
         console.log('type is :', item)
-        if (type === data.meta.type) setCurrentPage()
+        if (type === data.meta.type) setCurrentPage(item)
         if (type === data.meta.type) setCurrentImage(item)
         if (type === data.meta.type) setCurrentDocument(item)
       }
@@ -51,7 +51,7 @@ function Home() {
   useEffect(() => {
     fetchData('wagtailcore.Page', 2) // Initially load the first page
     fetchData('wagtailimages.Image', 2) // Initially load the first image
-    fetchData('wagtaildocs.Documents', 1) // Initially load the first document
+    fetchData('wagtaildocs.Documents', 12) // Initially load the first document
   }, [])
 
   const renderBlocks = () => {
