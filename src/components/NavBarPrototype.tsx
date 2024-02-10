@@ -35,16 +35,16 @@ const Prototype = () => {
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a>Transfer</a>
+                  <Link to="/transfer">Transfer</Link>
                 </li>
                 <li>
-                  <a>Curriculum</a>
+                  <Link to="/curriculum">Curriculum</Link>
                 </li>
                 <li>
-                  <a>Research</a>
+                  <Link to="/research">Research</Link>
                 </li>
                 <li>
-                  <a> Opportunities</a>
+                  <Link to="/research">Opportunities</Link>
                 </li>
               </ul>
             </div>
