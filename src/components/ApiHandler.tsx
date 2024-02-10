@@ -13,7 +13,7 @@ const api = axios.create({
 const setEndpointType = (type, id) => {
   let endpoint_type = ''
   switch (type) {
-    case 'wagtailcore.Page':
+    case 'core.ContentBlock':
       endpoint_type = `/pages/${id}`
       return endpoint_type
     case 'wagtailimages.Image':
@@ -31,7 +31,7 @@ const setEndpointType = (type, id) => {
 // Function to fetch data from Wagtail's v2 API endpoints
 // type: "pages", "images", or "documents"
 export default async function axiosFetchData(
-  type: 'wagtailcore.Page' | 'wagtailimages.Image' | 'wagtaildocs.Documents',
+  type: 'core.ContentBlock' | 'wagtailimages.Image' | 'wagtaildocs.Documents',
   id?: number,
 ) {
   try {

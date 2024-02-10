@@ -49,9 +49,9 @@ function Home() {
   }
 
   useEffect(() => {
-    fetchData('wagtailcore.Page', 2) // Initially load the first page
-    fetchData('wagtailimages.Image', 2) // Initially load the first image
-    fetchData('wagtaildocs.Documents', 12) // Initially load the first document
+    fetchData('core.ContentBlock', 3) // Initially load the first page
+    // fetchData('wagtailimages.Image', 2) // Initially load the first image
+    // fetchData('wagtaildocs.Documents', 12) // Initially load the first document
   }, [])
 
   const renderBlocks = () => {
@@ -171,22 +171,22 @@ function Home() {
   return (
     <>
       <Hero onButtonClick={scrollToTimeline} />
-      <Timeline ref={timelineRef}>
-        {timelineDetails.map((item, index) => (
-          <TimelineItem
-            key={index}
-            icon={item.icon}
-            content={item.content}
-            showConnectingLine={index < timelineDetails.length - 1} // Show connecting line except for the last item
-          />
-        ))}
-      </Timeline>
+      {/* <Timeline ref={timelineRef}> */}
+      {/*   {timelineDetails.map((item, index) => ( */}
+      {/*     <TimelineItem */}
+      {/*       key={index} */}
+      {/*       icon={item.icon} */}
+      {/*       content={item.content} */}
+      {/*       showConnectingLine={index < timelineDetails.length - 1} // Show connecting line except for the last item */}
+      {/*     /> */}
+      {/*   ))} */}
+      {/* </Timeline> */}
       <div>
         {currentPage && (
           <div>
             <h2>{currentPage.title}</h2>
             {/* Display current page content */}
-            <p>{currentPage.body}</p>
+            <p>{currentPage.meta.html_url}</p>
             <button onClick={handleNextPage}>NextPage</button>
           </div>
         )}
