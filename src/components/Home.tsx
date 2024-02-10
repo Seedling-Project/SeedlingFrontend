@@ -29,17 +29,16 @@ function Home() {
     try {
       const data = await axiosFetchData(type, nextId) // Modified to fetch by type and optional nextId
       console.log('Data is: ', data)
-      console.log(
-        'Data media link',
-        data.meta.download_url ? data.meta.download_url : data,
-      )
       // Assuming data structure contains items array for simplicity
-      if (data && data.length > 0) {
+      if (data) {
+        console.log('First element: ', data.items[0])
         const item = data.items[0] // Get the first item
         console.log('type is :', item)
         if (type === data.meta.type) setCurrentPage(item)
         if (type === data.meta.type) setCurrentImage(item)
         if (type === data.meta.type) setCurrentDocument(item)
+      } else {
+        console.log('Failed to set data')
       }
       setLoading(false)
     } catch (error) {
@@ -49,6 +48,9 @@ function Home() {
   }
 
   useEffect(() => {
+    if (currentLoading) {
+      console.log('Still Loading...')
+    }
     fetchData('core.ContentBlock', 3) // Initially load the first page
     // fetchData('wagtailimages.Image', 2) // Initially load the first image
     // fetchData('wagtaildocs.Documents', 12) // Initially load the first document
