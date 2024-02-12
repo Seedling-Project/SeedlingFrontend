@@ -21,7 +21,7 @@ const calc = (x: number, y: number, rect: DOMRect) => {
   // Normalize the cursor coordinates to be from -0.5 to 0.5
   const xRel = (x - (rect.left + rect.width / 2)) / rect.width // -0.5 when cursor at left edge, 0.5 at right edge
   const yRel = (y - (rect.top + rect.height / 2)) / rect.height // -0.5 when cursor at top edge, 0.5 at bottom edge
-  const tiltMax = 15 // The maximum tilt angle
+  const tiltMax = 7 // The maximum tilt angle
 
   // Inverting the signs for tiltX and tiltY to reverse the tilt direction
   const tiltY = -xRel * tiltMax // Tilt on Y-axis changes with horizontal movement
@@ -88,7 +88,7 @@ const TestCard: React.FC<number> = ({ id }) => {
         opacity: 1,
         background: `radial-gradient(circle at ${e.clientX - rect.left}px ${
           e.clientY - rect.top
-        }px, rgba(116, 128, 255, 0.65), transparent 60%)`,
+        }px, rgba(116, 128, 255, 0.25), transparent 50%)`,
       })
 
       set(calc(e.clientX, e.clientY, rect))
