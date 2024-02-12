@@ -34,7 +34,7 @@ const handleDocument = async (id) => {
   }
 }
 
-// Main object to fetch data based on what data is needed
+// Main object/class with methods to fetch data based on what data is needed
 // TODO: Define a way to not try to map a document and image to every page, even
 // if the page doesn't have a document and/or image
 const ApiHandler = {
@@ -122,6 +122,7 @@ const ApiHandler = {
       throw error
     }
   },
+  // Fetch all the page data at the /pages endpoint
   apiFetchPages: async (type) => {
     try {
       const response = await api.get('/pages')
