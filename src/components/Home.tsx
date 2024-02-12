@@ -8,54 +8,78 @@ import Timeline from './Timeline'
 import TimelineItem from './TimelineItem'
 import Carousel from './Carousel'
 import TestDocument from './TestDocument'
-import apiFetchData from './ApiHandler'
+import TestCard from './TestCard'
+import ApiHandler from './ApiHandler'
 
 function Home() {
   const timelineRef = useRef<HTMLDivElement>(null) // Create a ref for the Timeline component
   //new axios functionality, not completely set up but this is the form
   const [pageData, setPageData] = useState(null) // Holds the entire page data
   const [loading, setLoading] = useState(true)
-  const [i, set_i] = useState(7)
+  const [id, setID] = useState(7)
+  const [index, setIndex] = useState(0)
+  const [pagesIdList, setPagesIdList] = useState()
   // Initialize an array of image URLs
 
-  const fetchData = async (type, id) => {
-    setLoading(true)
-    try {
-      const data = await apiFetchData(type, id)
-      console.log(`The fetched data's title is: ${data.title}`)
+  // Function for grabbing all the pages
+  const fetchAllPages = async (type) => {
+    const testPages = await ApiHandler.apiFetchPages('core.ContentBlock')
+    const idList = testPages
+      .filter((item) => item.id !== 2)
+      .map((item) => item.id)
 
-      setPageData(data) // Set the entire page data, including images and documents
-      if (pageData) {
-        console.log(`We successfully set Page Data ${pageData}`)
-      } else {
-        console.log(`We failed to set Page Data: ${pageData}`)
-      }
-      console.log(`The document URL is: ${pageData.documentUrls}`)
-      setLoading(false)
-    } catch (error) {
-      console.error('Error fetching data:', error)
-      setLoading(false)
-    }
+    console.log('The idList is: ', idList)
+    // Set the id list to the global state of the component so you can
+    // access it anywhere within the component
+    setPagesIdList(idList)
+    setLoading(false)
   }
 
-  // Fetch the initial page data
+  // Populate the pagesIdList
   useEffect(() => {
-    fetchData('core.ContentBlock', i) // Assuming '3' is your starting page ID
+    fetchAllPages('core.ContentBlock')
     console.log(`Loading is ${loading}`)
-  }, [i])
+  }, [])
 
   if (loading) {
     return <p>Loading Content...</p>
   }
 
+  // TODO: Fix this function for a next page button
   const handleNextPage = () => {
-    set_i(i + 1)
-    console.log(i)
+    setIndex((i) => i + 1)
+    setID(() => pagesIdList[index % pagesIdList.length])
+    console.log(
+      `This is the pagesIdList: ${pagesIdList[index % pagesIdList.length]}`,
+    )
+    console.log(`This is the ID: ${id}`)
   }
 
+  // TODO: Fix this function for a previous page button
   const handlePrevPage = () => {
-    set_i(i - 1)
-    console.log(i)
+    setIndex((i) => i - 1)
+    setID(() => pagesIdList[index % pagesIdList.length])
+    console.log(
+      `This is the pagesIdList: ${pagesIdList[index % pagesIdList.length]}`,
+    )
+    console.log(`This is the ID: ${id}`)
+  }
+
+  // Was used to test the Api handler, now same functionality being handled in
+  // useEffect
+  const testAPIFunction = async () => {
+    const testPages = await ApiHandler.apiFetchPages('core.ContentBlock')
+    const pagesIDList = testPages.map((i) => i.id)
+
+    // Set the id list to the global state of the component so you can
+    // access it anywhere within the component
+    setPagesIdList(pagesIDList)
+
+    // for stuff in pagesIDList {
+    //     append pagesIDList[i] 'pages/${pagesIDList[i]}'
+    // }
+    console.log(pagesIDList)
+    console.log(testPages)
   }
 
   const scrollToTimeline = () => {
@@ -143,6 +167,11 @@ function Home() {
 
   return (
     <>
+      {/* <div> */}
+      {/*   <button className="btn btn-wide btn-accent" onClick={testAPIFunction}> */}
+      {/*     Test Api Function */}
+      {/*   </button> */}
+      {/* </div> */}
       <Hero onButtonClick={scrollToTimeline} />
       <Timeline ref={timelineRef}>
         {timelineDetails.map((item, index) => (
@@ -154,40 +183,20 @@ function Home() {
           />
         ))}
       </Timeline>
-      <div>
-        <TestDocument
-          key={pageData.id}
-          title={pageData.title}
-          subtitle={pageData.subtitle}
-          author={pageData.author}
-          date={pageData.date}
-          body={pageData.body}
-        />
-      </div>
-      <div>
-        <button onClick={handleNextPage}>Next page </button>
-      </div>
-      <div>
-        <button onClick={handlePrevPage}>Previous page</button>
-      </div>
-      <div>
-        {pageData && (
-          <div>
-            {pageData.imageUrls &&
-              pageData.imageUrls.map((imageUrl, index) => (
-                <img key={index} src={imageUrl} alt={`Image ${index}`} />
-              ))}
-            {/* Iterate over enriched document URLs if they exist */}
-            {pageData.documentUrls &&
-              pageData.documentUrls.map((documentUrl, index) => (
-                <a key={index} href={documentUrl}>
-                  View Document {index}
-                </a>
-              ))}
-          </div>
-        )}
-      </div>
+      {pagesIdList.map((item) => (
+        <TestCard id={item} />
+      ))}
       {/* Add a button or mechanism to fetch next page or content */}
+      <div>
+        <button className="btn btn-wide btn-neutral" onClick={handleNextPage}>
+          Next page{' '}
+        </button>
+      </div>
+      <div>
+        <button className="btn btn-wide btn-neutral" onClick={handlePrevPage}>
+          Previous page
+        </button>
+      </div>
     </>
   )
 }

@@ -34,8 +34,11 @@ const handleDocument = async (id) => {
   }
 }
 
+// Main object to fetch data based on what data is needed
+// TODO: Define a way to not try to map a document and image to every page, even
+// if the page doesn't have a document and/or image
 const ApiHandler = {
-  apiFetchData: async (type, id) => {
+  apiFetchPage: async (type, id) => {
     try {
       if (type !== 'core.ContentBlock') {
         // If not fetching a page, throw error
@@ -45,23 +48,66 @@ const ApiHandler = {
       const pageResponse = await api.get(`/pages/${id}/`)
       const pageData = pageResponse.data
 
-      // Assume pageData includes arrays of image and document IDs; adjust these paths as necessary
-      const imageIds =
-        pageData.body
-          .filter((item) => item.type === 'image') // Keep only items where type is 'image'
-          .map((item) => item.value) || // Extract the 'value' from those items
-        []
-      console.log(`the image ID is ${imageIds}`)
-      const documentIds =
-        pageData.body
-          .filter((item) => item.type === 'document') // Keep only items where type is 'image'
-          .map((item) => item.value) || // Extract the 'value' from those items
-        []
-      console.log(`the document ID is ${documentIds}`)
+      // Check if pageData.body exists
+      if (!pageData?.body) {
+        console.log('No Body in pageData')
+        return
+      }
 
-      // Fetch URLs for all images and documents
-      const imageUrls = await Promise.all(imageIds.map(handleImage))
-      const documentUrls = await Promise.all(documentIds.map(handleDocument))
+      // Filter and map image IDs from pageData.body
+      const imageIds = pageData.body
+        .filter((item: any) => item.type === 'image')
+        .map((item: any) => item.value)
+
+      // Process image IDs to get URLs
+      let imageUrls = []
+      if (imageIds.length > 0) {
+        imageUrls = await Promise.all(imageIds.map(handleImage))
+        console.log(`The image URLs are ${imageUrls}`)
+      } else {
+        console.log('No images found in pageData')
+      }
+
+      // Filter and map document IDs from pageData.body
+      const documentIds = pageData.body
+        .filter((item: any) => item.type === 'document')
+        .map((item: any) => item.value)
+
+      // Process document IDs to get URLs
+      let documentUrls = []
+      if (documentIds.length > 0) {
+        documentUrls = await Promise.all(documentIds.map(handleDocument))
+        console.log(`The document URLs are ${documentUrls}`)
+      } else {
+        console.log('No documents found in pageData')
+      }
+      // Assume pageData includes arrays of image and document IDs; adjust these paths as necessary
+      // Keep only items where type is 'image'
+      // Extract the 'value' from those items
+      // const imageIds = pageData?.body
+      //   ? pageData.body
+      //       .filter((item) => item.type === 'image')
+      //       .map((item) => item.value)
+      //   : console.log('No Body in pageData')
+      // console.log(`the image ID is ${imageIds}`)
+      // const documentIds = pageData?.body
+      //   ? pageData.body
+      //       .filter((item) => item.type === 'document')
+      //       .map((item) => item.value)
+      //   : console.log('No Body in pageData')
+      // console.log(`the document ID is ${documentIds}`)
+      //
+      // // Fetch URLs for all images and documents
+      // if (imageIds.length > 0) {
+      //   const imageUrls = await Promise.all(imageIds.map(handleImage))
+      // } else {
+      //   console.log('error error: ', imageIds)
+      // }
+      // if (documentIds.length > 0) {
+      //   const documentUrls = await Promise.all(documentIds.map(handleDocument))
+      // } else {
+      //   console.log('error error: ', documentIds)
+      // }
 
       // Enrich the original page data with the fetched URLs
       const enrichedPageData = {
@@ -76,8 +122,18 @@ const ApiHandler = {
       throw error
     }
   },
+  apiFetchPages: async (type) => {
+    try {
+      const response = await api.get('/pages')
+      console.log(
+        'The API handler is returning the following items: ',
+        response.data.items,
+      )
+      return response.data.items
+    } catch (error) {
+      console.log(`Error retrieving pages: ${error}`)
+    }
+  },
 }
-// Main function to fetch data based on the provided type and ID
-export async function apiFetchData(type, id) {}
 
-export default apiFetchData
+export default ApiHandler
