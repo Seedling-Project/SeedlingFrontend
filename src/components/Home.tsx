@@ -45,25 +45,55 @@ function Home() {
     return <p>Loading Content...</p>
   }
 
-  // TODO: Fix this function for a next page button
+  // prototype
   const handleNextPage = () => {
-    setIndex((i) => i + 1)
-    setID(() => pagesIdList[index % pagesIdList.length])
-    console.log(
-      `This is the pagesIdList: ${pagesIdList[index % pagesIdList.length]}`,
+    // Increment index and wrap around using modulo if it goes out of bounds
+    setIndex((prevIndex) => (prevIndex + 1) % pagesIdList.length)
+
+    // Use a callback in setID to ensure it uses the updated index
+    setID((prevState) => pagesIdList[(index + 1) % pagesIdList.length])
+    console.log(`Next ID: ${id}`)
+  }
+  // TODO: Fix this function for a next page button
+  // const handleNextPage = () => {
+  //   setIndex((i) => i + 1)
+  //   setID(() => pagesIdList[index % pagesIdList.length])
+  //   return <TestCard id={id} />
+  //   console.log(
+  //     `This is the pagesIdList: ${pagesIdList[index % pagesIdList.length]}`,
+  //   )
+  //   console.log(`This is the ID: ${id}`)
+  // }
+
+  //prototype
+  const handlePrevPage = () => {
+    // Decrement index, wrap around using modulo to handle negative values
+    setIndex((prevIndex) => {
+      const newIndex = prevIndex - 1
+      return newIndex < 0
+        ? pagesIdList.length - 1
+        : newIndex % pagesIdList.length
+    })
+
+    // Use a callback in setID to ensure it uses the updated index
+    // This calculation handles negative index by wrapping to the last element
+    setID(
+      (prevState) =>
+        pagesIdList[(index - 1 + pagesIdList.length) % pagesIdList.length],
     )
-    console.log(`This is the ID: ${id}`)
+    console.log(`Previous ID: ${id}`)
   }
 
-  // TODO: Fix this function for a previous page button
-  const handlePrevPage = () => {
-    setIndex((i) => i - 1)
-    setID(() => pagesIdList[index % pagesIdList.length])
-    console.log(
-      `This is the pagesIdList: ${pagesIdList[index % pagesIdList.length]}`,
-    )
-    console.log(`This is the ID: ${id}`)
-  }
+  // // TODO: Fix this function for a previous page button
+  // const handlePrevPage = () => {
+  //   setIndex((i) => i - 1)
+  //   setID(() => pagesIdList[index % pagesIdList.length])
+  //   return <TestCard id={id} />
+  //   console.log(
+  //     `This is the pagesIdList: ${pagesIdList[index % pagesIdList.length]}`,
+  //   )
+  //   console.log(`This is the ID: ${id}`)
+  // }
 
   // Was used to test the Api handler, now same functionality being handled in
   // useEffect
