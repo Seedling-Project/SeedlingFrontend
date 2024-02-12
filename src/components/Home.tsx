@@ -189,7 +189,7 @@ function Home() {
       {/* Add a button or mechanism to fetch next page or content */}
       <div>
         <button className="btn btn-wide btn-neutral" onClick={handleNextPage}>
-          Next page{' '}
+          Next page
         </button>
       </div>
       <div>
