@@ -34,64 +34,43 @@ const handleDocument = async (id) => {
   }
 }
 
-// Helper function to determine the endpoint based on the provided type and ID
-const setEndpointType = (type, id) => {
-  switch (type) {
-    case 'core.ContentBlock':
-      console.log('We found a page as the endpoint')
-      return `/pages/${id}`
-    case 'wagtailimages.Image':
-      console.log('We found an image as the endpoint')
-      return `/images/${id}`
-    case 'wagtaildocs.Documents':
-      console.log('We found a document as the endpoint')
-      return `/documents/${id}`
-    default:
-      console.error('Invalid type provided: ', type)
-      throw new Error('Invalid endpoint type provided')
-  }
-}
-
 // Main function to fetch data based on the provided type and ID
 export async function axiosFetchData(type, id) {
   try {
     if (type !== 'core.ContentBlock') {
-      // If not fetching a page, use the original logic
-      const endpoint = setEndpointType(type, id)
-      const response = await api.get(endpoint)
-      return response.data
-    } else {
-      // Fetch page data
-      const pageResponse = await api.get(`/pages/${id}/`)
-      const pageData = pageResponse.data
-
-      // Assume pageData includes arrays of image and document IDs; adjust these paths as necessary
-      const imageIds =
-        pageData.body
-          .filter((item) => item.type === 'image') // Keep only items where type is 'image'
-          .map((item) => item.value) || // Extract the 'value' from those items
-        []
-      console.log(`the image ID is ${imageIds}`)
-      const documentIds =
-        pageData.body
-          .filter((item) => item.type === 'document') // Keep only items where type is 'image'
-          .map((item) => item.value) || // Extract the 'value' from those items
-        []
-      console.log(`the document ID is ${documentIds}`)
-
-      // Fetch URLs for all images and documents
-      const imageUrls = await Promise.all(imageIds.map(handleImage))
-      const documentUrls = await Promise.all(documentIds.map(handleDocument))
-
-      // Enrich the original page data with the fetched URLs
-      const enrichedPageData = {
-        ...pageData,
-        imageUrls,
-        documentUrls,
-      }
-
-      return enrichedPageData
+      // If not fetching a page, throw error
+      throw error
     }
+    // Fetch page data
+    const pageResponse = await api.get(`/pages/${id}/`)
+    const pageData = pageResponse.data
+
+    // Assume pageData includes arrays of image and document IDs; adjust these paths as necessary
+    const imageIds =
+      pageData.body
+        .filter((item) => item.type === 'image') // Keep only items where type is 'image'
+        .map((item) => item.value) || // Extract the 'value' from those items
+      []
+    console.log(`the image ID is ${imageIds}`)
+    const documentIds =
+      pageData.body
+        .filter((item) => item.type === 'document') // Keep only items where type is 'image'
+        .map((item) => item.value) || // Extract the 'value' from those items
+      []
+    console.log(`the document ID is ${documentIds}`)
+
+    // Fetch URLs for all images and documents
+    const imageUrls = await Promise.all(imageIds.map(handleImage))
+    const documentUrls = await Promise.all(documentIds.map(handleDocument))
+
+    // Enrich the original page data with the fetched URLs
+    const enrichedPageData = {
+      ...pageData,
+      imageUrls,
+      documentUrls,
+    }
+
+    return enrichedPageData
   } catch (error) {
     console.error('Error fetching data: ', error)
     throw error
