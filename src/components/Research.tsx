@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { axiosFetchData } from './ApiHandler'
+import { apiFetchData } from './ApiHandler'
 import TestDocument from './TestDocument'
 
 const Research: React.FC = () => {
@@ -10,7 +10,7 @@ const Research: React.FC = () => {
     const fetchDocuments = async () => {
       setLoading(true)
       try {
-        const data = await axiosFetchData('core.ContentBlock', 3)
+        const data = await apiFetchData('core.ContentBlock', 3)
         console.log('Data fetched: ', data)
         setDocuments(data.map((doc) => ({ ...doc, contentLoaded: false })))
       } catch (error) {
@@ -24,7 +24,7 @@ const Research: React.FC = () => {
 
   const handleAccordionClick = async (id) => {
     if (!documents.find((doc) => doc.id === id).contentLoaded) {
-      const detailedData = await axiosFetchData(`document/${id}`)
+      const detailedData = await apiFetchData(`document/${id}`)
       setDocuments(
         documents.map((doc) =>
           doc.id === id

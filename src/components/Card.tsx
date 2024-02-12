@@ -4,7 +4,7 @@
 
 import React, { useRef } from 'react'
 import { useSpring, animated } from 'react-spring'
-interface DocumentProps {
+interface CardProps {
   title: string
   subtitle?: string
   author?: string
@@ -27,13 +27,7 @@ const calc = (x: number, y: number, rect: DOMRect) => {
   }
 }
 
-const Document: React.FC<DocumentProps> = ({
-  title,
-  subtitle,
-  author,
-  date,
-  body,
-}) => {
+const Card: React.FC<CardProps> = ({ title, subtitle, author, date, body }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [opacity, setOpacity] = useSpring(() => ({ value: 0 }))
   const [spotlightStyle, setSpotlightStyle] = useSpring(() => ({
@@ -97,4 +91,4 @@ const Document: React.FC<DocumentProps> = ({
   )
 }
 
-export default Document
+export default Card
