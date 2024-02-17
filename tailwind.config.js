@@ -18,7 +18,9 @@ export default {
       fontFamily: {
         'times': ['Times New Roman', 'serif'],
         'franklin': ['Franklin Gothic', 'Arial', 'sans-serif'],
-        
+        body: ['Merriweather', 'serif'],
+        heading: ['Open Sans', 'sans-serif'],
+        accent: ['Roboto Condensed', 'sans-serif'],
       }
     },
   },
