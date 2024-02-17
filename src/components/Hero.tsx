@@ -1,22 +1,22 @@
 interface HeroProps {
-  onButtonClick: () => void; // Function to call when the button is clicked
+  onButtonClick: () => void // Function to call when the button is clicked
 }
 const Hero: React.FC<HeroProps> = ({ onButtonClick }) => {
   return (
     <div
       className="hero bg-base-200 rounded-lg"
       style={{
-        display: "flex",
-        alignItems: "flex-start",
-        justifyContent: "center",
-        paddingTop: "8vh",
-        paddingBottom: "4vh",
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        paddingTop: '8vh',
+        paddingBottom: '4vh',
       }}
     >
       <div className="hero-content flex-col lg:flex-row">
         <img
           src="/hero_upscaled.png"
-          className="max-w-sm rounded-lg shadow-2xl"
+          className=" w-5/6 max-w-sm rounded-lg shadow-2xl"
         />
         <div>
           <h1 className="text-5xl font-bold">Seedling Education</h1>
@@ -30,13 +30,16 @@ const Hero: React.FC<HeroProps> = ({ onButtonClick }) => {
             receive guidance on the essentials of community college and
             transfer.
           </p>
-          <button className="btn btn-wide btn-success" onClick={onButtonClick}>
+          <button
+            className=" text-base text-white btn btn-wide btn-success"
+            onClick={onButtonClick}
+          >
             Start Learning
           </button>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero
