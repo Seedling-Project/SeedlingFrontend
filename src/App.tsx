@@ -1,4 +1,4 @@
-import Home from './components/Home'
+import Navbar from './components/NavBar'
 import Prototype from './components/NavBarPrototype'
 import Footer from './components/Footer'
 import Classes from './components/Classes'

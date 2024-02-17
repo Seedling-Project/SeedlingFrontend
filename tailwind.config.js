@@ -12,17 +12,17 @@
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
-        'times': ['Times New Roman', 'serif'],
-        'franklin': ['Franklin Gothic', 'Arial', 'sans-serif'],
+        times: ['Times New Roman', 'serif'],
+        franklin: ['Franklin Gothic', 'Arial', 'sans-serif'],
         body: ['Merriweather', 'serif'],
         heading: ['Open Sans', 'sans-serif'],
         accent: ['Roboto Condensed', 'sans-serif'],
-      }
+      },
     },
   },
-  plugins: [require("daisyui"), require("preline/plugin")],
-};
+  plugins: [require('daisyui'), require('preline/plugin')],
+}
