@@ -7,7 +7,6 @@ import Card from './Card'
 import Timeline from './Timeline'
 import TimelineItem from './TimelineItem'
 import Carousel from './Carousel'
-import TestDocument from './TestDocument'
 import TestCard from './TestCard'
 import ApiHandler from './ApiHandler'
 
@@ -217,16 +216,7 @@ function Home() {
         <TestCard id={item} />
       ))}
       {/* Add a button or mechanism to fetch next page or content */}
-      <div>
-        <button className="btn btn-wide btn-neutral" onClick={handleNextPage}>
-          Next page
-        </button>
-      </div>
-      <div>
-        <button className="btn btn-wide btn-neutral" onClick={handlePrevPage}>
-          Previous page
-        </button>
-      </div>
+
     </>
   )
 }

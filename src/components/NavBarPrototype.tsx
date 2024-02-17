@@ -1,7 +1,6 @@
 import { Link, Route, Routes } from 'react-router-dom'
 import Home from './Home'
 import Curriculum from './Curriculum'
-import Research from './Research'
 
 const Prototype = () => {
   return (
@@ -41,7 +40,7 @@ const Prototype = () => {
                   <Link to="/curriculum">Curriculum</Link>
                 </li>
                 <li>
-                  <Link to="/research">Opportunities</Link>
+                  <Link to="/transfer">Opportunities</Link>
                 </li>
                 <li>
                   <Link to="/research">Miscellaneous</Link>
@@ -82,10 +81,10 @@ const Prototype = () => {
                 <Link to="/curriculum/*">Curriculum</Link>
               </li>
               <li>
-                <Link to="/research">Research</Link>
+                <Link to="/transfer">Research</Link>
               </li>
               <li>
-                <Link to="/research">Opportunities</Link>
+                <Link to="/transfer">Opportunities</Link>
               </li>
             </ul>
             <button className="btn btn-ghost btn-circle ">
@@ -111,7 +110,7 @@ const Prototype = () => {
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Home />} />
           <Route path="/curriculum/*" element={<Curriculum />} />
-          <Route path="/research" element={<Research />} />
+          <Route path="/research" element={<Home />} />
           <Route path="/other" element={<Home />} />
         </Routes>
       </>
