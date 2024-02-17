@@ -41,10 +41,10 @@ const Prototype = () => {
                   <Link to="/curriculum">Curriculum</Link>
                 </li>
                 <li>
-                  <Link to="/research">Research</Link>
+                  <Link to="/research">Opportunities</Link>
                 </li>
                 <li>
-                  <Link to="/research">Opportunities</Link>
+                  <Link to="/research">Miscellaneous</Link>
                 </li>
               </ul>
             </div>
@@ -79,7 +79,7 @@ const Prototype = () => {
                 <Link to="/transfer">Transfer</Link>
               </li>
               <li>
-                <Link to="/curriculum">Curriculum</Link>
+                <Link to="/curriculum/*">Curriculum</Link>
               </li>
               <li>
                 <Link to="/research">Research</Link>
@@ -110,7 +110,7 @@ const Prototype = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Home />} />
-          <Route path="/curriculum" element={<Curriculum />} />
+          <Route path="/curriculum/*" element={<Curriculum />} />
           <Route path="/research" element={<Research />} />
           <Route path="/other" element={<Home />} />
         </Routes>
