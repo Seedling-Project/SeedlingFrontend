@@ -41,10 +41,10 @@ const Prototype = () => {
                   <Link to="/curriculum">Curriculum</Link>
                 </li>
                 <li>
-                  <Link to="/research">Research</Link>
+                  <Link to="/research">Opportunities</Link>
                 </li>
                 <li>
-                  <Link to="/research">Opportunities</Link>
+                  <Link to="/research">Miscellaneous</Link>
                 </li>
               </ul>
             </div>
