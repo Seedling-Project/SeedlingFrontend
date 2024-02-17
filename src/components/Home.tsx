@@ -90,28 +90,7 @@ function Home() {
   // when the documents are set, a
   const timelineDetails = [
     {
-      icon: "/team_image.png", // Replace with actual icon paths or import statements
-      content: (
-        <Document
-          title="Document Title"
-          subtitle="This is a subtitle"
-          author="John Doe"
-          date="Jan 1, 2023"
-          body="Here is some text representing the body of the document. This text can be multiple paragraphs long and contain detailed content."
-        />
-      ),
-    },
-    // ... Add more items as needed
-    {
-      icon: "/additional-logo.png",
-      content: <div>Your second content component or text here</div>,
-    },
-    {
-      icon: "/additional-logo.png",
-      content: <div>Your second content component or text here</div>,
-    },
-    {
-      icon: "/team_image.png", // Replace with actual icon paths or import statements
+      icon: "/additional-logo.png", // Replace with actual icon paths or import statements
       content: (
         <Document
           title="Document Title"
@@ -123,7 +102,19 @@ function Home() {
       ),
     },
     {
-      icon: "/team_image.png", // Replace with actual icon paths or import statements
+      icon: "/additional-logo.png", // Replace with actual icon paths or import statements
+      content: (
+        <Document
+          title="Document Title"
+          subtitle="This is a subtitle"
+          author="John Doe"
+          date="Jan 1, 2023"
+          body="Here is some text representing the body of the document. This text can be multiple paragraphs long and contain detailed content."
+        />
+      ),
+    },
+    {
+      icon: "/additional-logo.png", // Replace with actual icon paths or import statements
       content: (
         <Document
           title="Document Title"
@@ -134,30 +125,7 @@ function Home() {
         />
       ),
     },
-    {
-      icon: "/team_image.png", // Replace with actual icon paths or import statements
-      content: (
-        <Document
-          title="Document Title number 2"
-          subtitle="This is a subtitle as well"
-          author="John Doe"
-          date="Jan 1, 2023"
-          body="Here is some text representing the body of the document. This text can be multiple paragraphs long and contain detailed content."
-        />
-      ),
-    },
-    {
-      icon: "/team_image.png", // Replace with actual icon paths or import statements
-      content: (
-        <Document
-          title="Document Title"
-          subtitle="This is a subtitle as well"
-          author="John Doe"
-          date="Jan 1, 2023"
-          body="Here is some text representing the body of the document. This text can be multiple paragraphs long and contain detailed content."
-        />
-      ),
-    },
+
   ];
 
   return (
