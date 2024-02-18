@@ -131,7 +131,7 @@ function Home() {
       )
 }, {
   icon: '/additional-logo.png', // Replace with actual icon paths or import statements
-  content: (<MovingCard id="20"/>
+  content: (<TestCard id="20"/>
 
   )
 },

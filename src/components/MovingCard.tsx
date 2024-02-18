@@ -121,13 +121,13 @@ const MovingCard: React.FC<number> = ({ id }) => {
           style={spotlightStyle}
         />
         <div className="text-center mb-4">
-          <h1 className="text-3xl font-bold mb-2">{cardProps?.title}</h1>
-          <h2 className="text-xl font-semibold">{cardProps?.subtitle}</h2>
-          <p className="text-md mb-4">
+          <h1 className="text-3xl font-bold mb-2 font-times">{cardProps?.title}</h1>
+          <h2 className="text-xl font-semibold font-franklin">{cardProps?.subtitle}</h2>
+          <p className="text-md mb-4 font-accent">
             {`${cardProps?.author} - ${cardProps?.date}`}
           </p>
         </div>
-        <div className="text-left">
+        <div className="text-left font-body">
           {/* Render each block */}
           {cardProps?.body.map((block: any, index: number) => (
             <React.Fragment key={index}>{renderBlock(block)}</React.Fragment>
