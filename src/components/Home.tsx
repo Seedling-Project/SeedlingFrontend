@@ -22,6 +22,9 @@ function Home() {
   const [pagesIdList, setPagesIdList] = useState()
   // Initialize an array of image URLs
 
+  // function for testing the LoadingScreen component, ex: await delay(3000)
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
   // Function for grabbing all the pages
   const fetchAllPages = async (type) => {
     const testPages = await ApiHandler.apiFetchPages('core.ContentBlock')
@@ -43,7 +46,7 @@ function Home() {
   }, [])
 
   if (loading) {
-    return <p>Loading Content...</p>
+    return <LoadingScreen />
   }
 
   // prototype
@@ -157,7 +160,6 @@ function Home() {
           />
         ))}
       </Timeline>
-      <LoadingScreen />
       {/* Add a button or mechanism to fetch next page or content */}
     </>
   )
