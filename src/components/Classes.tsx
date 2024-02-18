@@ -3,16 +3,12 @@ import { useParams, useLocation } from 'react-router-dom'
 import TestCard from './TestCard'
 
 export function Classes() {
-  const { id } = useParams()
   const location = useLocation()
-  const { className } = location.state || {} // Provide a fallback object to avoid destructuring undefined
-  useEffect(() => {
-    console.log(`ID: ${id}, ClassName: ${className}`)
-  }, [id, className]) // Dependency array, re-run the effect when `id` or `className` changes
+  const { id } = location.state || {} // Provide a fallback object to avoid destructuring undefined
 
   return (
     <>
-      <TestCard id="20"></TestCard>
+      <TestCard id={id}></TestCard>
     </>
   )
 }
