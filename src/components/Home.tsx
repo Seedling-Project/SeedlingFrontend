@@ -10,6 +10,7 @@ import Carousel from './Carousel'
 import TestCard from './TestCard'
 import ApiHandler from './ApiHandler'
 import MovingCard from './MovingCard'
+import LoadingScreen from './LoadingScreen'
 
 function Home() {
   const timelineRef = useRef<HTMLDivElement>(null) // Create a ref for the Timeline component
@@ -20,6 +21,9 @@ function Home() {
   const [index, setIndex] = useState(0)
   const [pagesIdList, setPagesIdList] = useState()
   // Initialize an array of image URLs
+
+  // function for testing the LoadingScreen component, ex: await delay(3000)
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
   // Function for grabbing all the pages
   const fetchAllPages = async (type) => {
@@ -42,7 +46,7 @@ function Home() {
   }, [])
 
   if (loading) {
-    return <p>Loading Content...</p>
+    return <LoadingScreen />
   }
 
   // prototype
@@ -126,22 +130,17 @@ function Home() {
   const timelineDetails = [
     {
       icon: '/additional-logo.png', // Replace with actual icon paths or import statements
-      content: (<MovingCard id="19"/>
-
-      )
-}, {
-  icon: '/additional-logo.png', // Replace with actual icon paths or import statements
-  content: (<TestCard id="20"/>
-
-  )
-},
-{
-  icon: '/additional-logo.png', // Replace with actual icon paths or import statements
-  content: (<MovingCard id="15"/>
-
-  )
-}]
-
+      content: <MovingCard id="19" />,
+    },
+    {
+      icon: '/additional-logo.png', // Replace with actual icon paths or import statements
+      content: <TestCard id="20" />,
+    },
+    {
+      icon: '/additional-logo.png', // Replace with actual icon paths or import statements
+      content: <MovingCard id="15" />,
+    },
+  ]
 
   return (
     <>
@@ -161,9 +160,7 @@ function Home() {
           />
         ))}
       </Timeline>
-      
       {/* Add a button or mechanism to fetch next page or content */}
-
     </>
   )
 }
