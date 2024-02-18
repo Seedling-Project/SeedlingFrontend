@@ -38,7 +38,7 @@ const Curriculum: React.FC = () => {
               onClick={() =>
                 handleRowClick(
                   '/classes/8',
-                  'MATH-161: Trigonometry and MATH-162: Precalculus',
+                  
                 )
               }
             >
@@ -52,7 +52,7 @@ const Curriculum: React.FC = () => {
             <tr
               className="hover:cursor-pointer "
               onClick={() =>
-                handleRowClick('/classes/9', 'MATH-171: Calculus I')
+                handleRowClick('/classes/9')
               }
             >
               <th>8</th>
@@ -64,7 +64,7 @@ const Curriculum: React.FC = () => {
             <tr
               className="hover:cursor-pointer"
               onClick={() =>
-                handleRowClick('/classes/6', 'MATH-172: Calculus II')
+                handleRowClick('/classes/6')
               }
             >
               <th>9</th>
@@ -76,7 +76,7 @@ const Curriculum: React.FC = () => {
             <tr
               className="hover:cursor-pointer"
               onClick={() =>
-                handleRowClick('/classes/10', 'MATH-173: Calculus III and IV')
+                handleRowClick('/classes/10')
               }
             >
               <th>10</th>
@@ -88,7 +88,7 @@ const Curriculum: React.FC = () => {
             <tr
               className="hover:cursor-pointer"
               onClick={() =>
-                handleRowClick('/classes/11', 'MATH-191: Linear Algebra')
+                handleRowClick('/classes/11')
               }
             >
               <th>11</th>
@@ -102,7 +102,7 @@ const Curriculum: React.FC = () => {
               onClick={() =>
                 handleRowClick(
                   '/classes/12',
-                  'MATH-193: Ordinary Differential Equations',
+              
                 )
               }
             >
@@ -115,7 +115,7 @@ const Curriculum: React.FC = () => {
             <tr
               className="hover:cursor-pointer"
               onClick={() =>
-                handleRowClick('/classes/13', 'MATH-134: Elementary Statistics')
+                handleRowClick('/classes/13')
               }
             >
               <th>7</th>
@@ -143,7 +143,7 @@ const Curriculum: React.FC = () => {
             <tr
               className="hover:cursor-pointer"
               onClick={() =>
-                handleRowClick('/classes/14', 'PHYS-101: Mechanics')
+                handleRowClick('/classes/14')
               }
             >
               <th>1</th>
@@ -156,7 +156,7 @@ const Curriculum: React.FC = () => {
               onClick={() =>
                 handleRowClick(
                   '/classes/15',
-                  'PHYS-102: Waves, ThermoDynamics, Optics',
+                
                 )
               }
             >
@@ -170,7 +170,7 @@ const Curriculum: React.FC = () => {
               onClick={() =>
                 handleRowClick(
                   '/classes/16',
-                  'PHYS-103: Electricity, Magnetism, and Modern Physics',
+                  
                 )
               }
             >
@@ -199,7 +199,7 @@ const Curriculum: React.FC = () => {
             <tr
               className="hover:cursor-pointer"
               onClick={() =>
-                handleRowClick('/classes/17', 'CHEM-101: Chemistry I')
+                handleRowClick('/classes/17')
               }
             >
               <th>1</th>
@@ -210,7 +210,7 @@ const Curriculum: React.FC = () => {
             <tr
               className="hover:cursor-pointer"
               onClick={() =>
-                handleRowClick('/classes/18', 'CHEM-102: Chemistry II')
+                handleRowClick('/classes/18')
               }
             >
               <th>2</th>
@@ -221,7 +221,7 @@ const Curriculum: React.FC = () => {
             <tr
               className="hover:cursor-pointer"
               onClick={() =>
-                handleRowClick('/classes/19', 'CHEM-112: Organic Chemistry I')
+                handleRowClick('/classes/19')
               }
             >
               <th>3</th>
@@ -231,7 +231,7 @@ const Curriculum: React.FC = () => {
             <tr
               className="hover:cursor-pointer"
               onClick={() =>
-                handleRowClick('/classes/20', 'CHEM-113: Organic Chemistry II')
+                handleRowClick('/classes/20')
               }
             >
               <th>4</th>
@@ -259,7 +259,7 @@ const Curriculum: React.FC = () => {
             <tr
               className="hover:cursor-pointer"
               onClick={() =>
-                handleRowClick('/classes/21', 'BIO-101: Biological Principles')
+                handleRowClick('/classes/21')
               }
             >
               <th>1</th>
@@ -270,7 +270,7 @@ const Curriculum: React.FC = () => {
             <tr
               className="hover:cursor-pointer"
               onClick={() =>
-                handleRowClick('/classes/22', 'BOT-101: General Botany')
+                handleRowClick('/classes/22')
               }
             >
               <th>2</th>
@@ -281,7 +281,7 @@ const Curriculum: React.FC = () => {
             <tr
               className="hover:cursor-pointer"
               onClick={() =>
-                handleRowClick('/classes/23', 'ZOOL-101: General Zoology')
+                handleRowClick('/classes/23')
               }
             >
               <th>3</th>
