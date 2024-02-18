@@ -74,16 +74,16 @@ const Prototype = () => {
 
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
-              <li>
+              <li className="font-accent">
                 <Link to="/transfer">Transfer</Link>
               </li>
-              <li>
+              <li className="font-accent">
                 <Link to="/curriculum/*">Curriculum</Link>
               </li>
-              <li>
+              <li className="font-accent">
                 <Link to="/transfer">Research</Link>
               </li>
-              <li>
+              <li className="font-accent">
                 <Link to="/transfer">Opportunities</Link>
               </li>
             </ul>

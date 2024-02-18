@@ -19,19 +19,20 @@ const Hero: React.FC<HeroProps> = ({ onButtonClick }) => {
           className=" w-5/6 max-w-sm rounded-lg shadow-2xl"
         />
         <div>
-          <h1 className="text-5xl font-bold">Seedling Education</h1>
-          <p className="py-6">
+          <h1 className="text-5xl font-bold font-times">Seedling Education</h1>
+          <p className="py-6 times-body">
             Breaking Barriers: A Transformative STEM Journey with Enhanced
             Opportunities
             <br></br>
             <br></br>
             <hr></hr>
-            <br></br>Discover research opportunities, boost your GPA, and
+            <br></br>
+            Discover research opportunities, boost your GPA, and
             receive guidance on the essentials of community college and
             transfer.
           </p>
           <button
-            className=" text-base text-white btn btn-wide btn-success"
+            className=" text-base text-white btn btn-wide btn-success font-franklin"
             onClick={onButtonClick}
           >
             Start Learning
