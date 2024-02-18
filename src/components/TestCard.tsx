@@ -64,13 +64,17 @@ const TestCard: React.FC<number> = ({ id }) => {
         ref={ref}
         className="bg-white text-gray-800 max-w-3xl mx-auto my-8 p-8 rounded-lg shadow-lg">
         <div className="text-center mb-4">
-          <h1 className="text-3xl font-bold mb-2">{cardProps?.title}</h1>
-          <h2 className="text-xl font-semibold">{cardProps?.subtitle}</h2>
-          <p className="text-md mb-4">
-            {`${cardProps?.author} - ${cardProps?.date}`}
-          </p>
+          <h1 className="text-3xl font-bold mb-2 font-franklin">{cardProps?.title}</h1>
+          <h2 className="text-xl font-semibold font-accent">{cardProps?.subtitle}</h2>
+          <p className="text-md mb-4 font-body">
+            {`${cardProps?.author}`}
+           </p> 
+           <p className="text-md mb-4">
+            {`- ${cardProps?.date}`}
+            </p>
+          
         </div>
-        <div className="text-left">
+        <div className="text-left font-times">
           {/* Render each block */}
           {cardProps?.body.map((block: any, index: number) => (
             <React.Fragment key={index}>{renderBlock(block)}</React.Fragment>

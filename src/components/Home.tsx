@@ -9,6 +9,7 @@ import TimelineItem from './TimelineItem'
 import Carousel from './Carousel'
 import TestCard from './TestCard'
 import ApiHandler from './ApiHandler'
+import MovingCard from './MovingCard'
 
 function Home() {
   const timelineRef = useRef<HTMLDivElement>(null) // Create a ref for the Timeline component
@@ -124,75 +125,23 @@ function Home() {
 
   const timelineDetails = [
     {
-      icon: '/team_image.png', // Replace with actual icon paths or import statements
-      content: (
-        <Card
-          title="Card Title"
-          subtitle="This is a subtitle"
-          author="John Doe"
-          date="Jan 1, 2023"
-          body="Here is some text representing the body of the Card. This text can be multiple paragraphs long and contain detailed content."
-        />
-      ),
-    },
-    // ... Add more items as needed
-    {
-      icon: '/additional-logo.png',
-      content: <div>Your second content component or text here</div>,
-    },
-    {
-      icon: '/additional-logo.png',
-      content: <div>Your second content component or text here</div>,
-    },
-    {
-      icon: '/team_image.png', // Replace with actual icon paths or import statements
-      content: (
-        <Card
-          title="Card Title"
-          subtitle="This is a subtitle"
-          author="John Doe"
-          date="Jan 1, 2023"
-          body="Here is some text representing the body of the Card. This text can be multiple paragraphs long and contain detailed content."
-        />
-      ),
-    },
-    {
-      icon: '/team_image.png', // Replace with actual icon paths or import statements
-      content: (
-        <Card
-          title="Card Title"
-          subtitle="This is a subtitle as well"
-          author="John Doe"
-          date="Jan 1, 2023"
-          body="Here is some text representing the body of the Card. This text can be multiple paragraphs long and contain detailed content."
-        />
-      ),
-    },
-    {
-      icon: '/team_image.png', // Replace with actual icon paths or import statements
-      content: (
-        <Card
-          title="Card Title number 2"
-          subtitle="This is a subtitle as well"
-          author="John Doe"
-          date="Jan 1, 2023"
-          body="Here is some text representing the body of the Card. This text can be multiple paragraphs long and contain detailed content."
-        />
-      ),
-    },
-    {
-      icon: '/team_image.png', // Replace with actual icon paths or import statements
-      content: (
-        <Card
-          title="Card Title"
-          subtitle="This is a subtitle as well"
-          author="John Doe"
-          date="Jan 1, 2023"
-          body="Here is some text representing the body of the card. This text can be multiple paragraphs long and contain detailed content."
-        />
-      ),
-    },
-  ]
+      icon: '/additional-logo.png', // Replace with actual icon paths or import statements
+      content: (<MovingCard id="19"/>
+
+      )
+}, {
+  icon: '/additional-logo.png', // Replace with actual icon paths or import statements
+  content: (<MovingCard id="20"/>
+
+  )
+},
+{
+  icon: '/additional-logo.png', // Replace with actual icon paths or import statements
+  content: (<MovingCard id="15"/>
+
+  )
+}]
+
 
   return (
     <>
@@ -212,9 +161,7 @@ function Home() {
           />
         ))}
       </Timeline>
-      {pagesIdList.map((item) => (
-        <TestCard id={item} />
-      ))}
+      
       {/* Add a button or mechanism to fetch next page or content */}
 
     </>
