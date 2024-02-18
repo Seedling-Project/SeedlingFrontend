@@ -6,8 +6,10 @@ import Home from './Home'
 const Curriculum: React.FC = () => {
   const navigate = useNavigate()
 
-  const handleRowClick = (path: string, className: string) => {
-    navigate(path, { state: { className } })
+  const handleRowClick = (path: string) => {
+    // Extracting ID from the path
+    const id = path.split('/').pop(); // Assuming path format "/classes/:id"
+    navigate(path, { state: { id } })
   }
 
   return (
@@ -48,7 +50,7 @@ const Curriculum: React.FC = () => {
             {/* row 2 */}
             {/* row 2 - Calculus I */}
             <tr
-              className="hover:cursor-pointer"
+              className="hover:cursor-pointer "
               onClick={() =>
                 handleRowClick('/classes/9', 'MATH-171: Calculus I')
               }
