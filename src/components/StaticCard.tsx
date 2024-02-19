@@ -22,9 +22,9 @@ const StaticCard: React.FC<number> = ({ id }) => {
   const [cardProps, setCardProps] = useState()
   console.log('The TestCard ID is: ', id)
 
-  const fetchData = async (type, pageID) => {
+  const fetchData = async (pageID) => {
     try {
-      const data = await ApiHandler.apiFetchPage(type, pageID)
+      const data = await ApiHandler.apiFetchPage(pageID)
       console.log('The Data is: ', data)
       setCardProps(data)
     } catch (error) {
@@ -48,7 +48,7 @@ const StaticCard: React.FC<number> = ({ id }) => {
     }
   }
   useEffect(() => {
-    fetchData('core.ContentBlock', id)
+    fetchData(id)
     console.log('The Card Props are: ', cardProps)
     if (cardProps?.body) {
       renderBlock(cardProps.body)
@@ -68,9 +68,6 @@ const StaticCard: React.FC<number> = ({ id }) => {
           <h1 className="text-3xl font-bold mb-2 font-times">
             {cardProps?.title}
           </h1>
-          <h2 className="text-xl font-semibold font-franklin">
-            {cardProps?.subtitle}
-          </h2>
           <p className="text-md mb-4 font-accent">
             {`${cardProps?.author}- ${cardProps?.date}`}
           </p>

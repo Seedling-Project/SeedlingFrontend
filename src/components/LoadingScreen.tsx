@@ -11,6 +11,15 @@ const LoadingScreen = () => {
       <div className="skeleton h-4 w-3/4"></div>
       <div className="skeleton h-4 w-1/2"></div>
       <div className="skeleton h-4 w-full"></div>
+      <div className="skeleton h-4 w-3/4"></div>
+      <div className="skeleton h-4 w-1/2"></div>
+      <div className="skeleton h-4 w-full"></div>
+      <div className="skeleton h-4 w-3/4"></div>
+      <div className="skeleton h-4 w-1/2"></div>
+      <div className="skeleton h-4 w-full"></div>
+      <div className="skeleton h-4 w-3/4"></div>
+      <div className="skeleton h-4 w-1/2"></div>
+      <div className="skeleton h-4 w-full"></div>
     </div>
   )
 }
