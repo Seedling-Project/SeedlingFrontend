@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import ApiHandler from './ApiHandler'
-import TestCard from './TestCard'
+import StaticCard from './StaticCard'
 
 const Accordian: React.FC<number> = ({ id }) => {
   const [cardProps, setCardProps] = useState()
@@ -28,8 +28,8 @@ const Accordian: React.FC<number> = ({ id }) => {
         {cardProps?.title}
       </div>
       <div className="collapse-content">
-        <TestCard id={id} />
-        <TestCard id={id + 1} />
+        <StaticCard id={id} />
+        <StaticCard id={id + 1} />
       </div>
     </div>
   )

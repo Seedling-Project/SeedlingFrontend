@@ -7,9 +7,9 @@ import Card from './Card'
 import Timeline from './Timeline'
 import TimelineItem from './TimelineItem'
 import Carousel from './Carousel'
-import TestCard from './TestCard'
+import StaticCard from './StaticCard'
 import ApiHandler from './ApiHandler'
-import MovingCard from './MovingCard'
+import AnimatedCard from './AnimatedCard'
 import LoadingScreen from './LoadingScreen'
 
 function Home() {
@@ -130,15 +130,15 @@ function Home() {
   const timelineDetails = [
     {
       icon: '/additional-logo.png', // Replace with actual icon paths or import statements
-      content: <MovingCard id="19" />,
+      content: <AnimatedCard id="19" />,
     },
     {
       icon: '/additional-logo.png', // Replace with actual icon paths or import statements
-      content: <TestCard id="20" />,
+      content: <StaticCard id="20" />,
     },
     {
       icon: '/additional-logo.png', // Replace with actual icon paths or import statements
-      content: <MovingCard id="19" />,
+      content: <AnimatedCard id="19" />,
     },
   ]
 

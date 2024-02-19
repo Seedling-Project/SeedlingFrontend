@@ -2,7 +2,7 @@ import { useParams, useLocation } from 'react-router-dom'
 import Accordian from './Accordian'
 import Carousel from './Carousel'
 import Sidebar from './Sidebar'
-import TestCard from './TestCard'
+import StaticCard from './StaticCard'
 
 export function Classes() {
   const location = useLocation()
@@ -11,7 +11,7 @@ export function Classes() {
   return (
     <>
       <Sidebar />
-      <TestCard id={id} />
+      <StaticCard id={id} />
       <Accordian id={id} />
     </>
   )
