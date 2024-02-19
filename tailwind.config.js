@@ -25,7 +25,7 @@ export default {
     },
   },
   daisyui: {
-    themes: ['wireframe'],
+    themes: ['lofi'],
   },
   plugins: [require('daisyui'), require('preline/plugin')],
 }
