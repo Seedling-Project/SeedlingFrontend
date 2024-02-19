@@ -32,7 +32,7 @@ const calc = (x: number, y: number, rect: DOMRect) => {
   }
 }
 
-const MovingCard: React.FC<number> = ({ id }) => {
+const AnimatedCard: React.FC<number> = ({ id }) => {
   const [cardProps, setCardProps] = useState()
   console.log('The TestCard ID is: ', id)
 
@@ -121,8 +121,12 @@ const MovingCard: React.FC<number> = ({ id }) => {
           style={spotlightStyle}
         />
         <div className="text-center mb-4">
-          <h1 className="text-3xl font-bold mb-2 font-times">{cardProps?.title}</h1>
-          <h2 className="text-xl font-semibold font-franklin">{cardProps?.subtitle}</h2>
+          <h1 className="text-3xl font-bold mb-2 font-times">
+            {cardProps?.title}
+          </h1>
+          <h2 className="text-xl font-semibold font-franklin">
+            {cardProps?.subtitle}
+          </h2>
           <p className="text-md mb-4 font-accent">
             {`${cardProps?.author} - ${cardProps?.date}`}
           </p>
@@ -151,4 +155,4 @@ const MovingCard: React.FC<number> = ({ id }) => {
   )
 }
 
-export default MovingCard;
+export default AnimatedCard

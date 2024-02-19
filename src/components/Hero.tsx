@@ -27,12 +27,11 @@ const Hero: React.FC<HeroProps> = ({ onButtonClick }) => {
             <br></br>
             <hr></hr>
             <br></br>
-            Discover research opportunities, boost your GPA, and
-            receive guidance on the essentials of community college and
-            transfer.
+            Discover research opportunities, boost your GPA, and receive
+            guidance on the essentials of community college and transfer.
           </p>
           <button
-            className=" text-base text-white btn btn-wide btn-success font-franklin"
+            className=" text-base text-white btn btn-wide btn-primary font-franklin"
             onClick={onButtonClick}
           >
             Start Learning

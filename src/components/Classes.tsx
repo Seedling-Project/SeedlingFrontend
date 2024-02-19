@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
-import TestCard from './TestCard'
+import Accordian from './Accordian'
+import Carousel from './Carousel'
+import Sidebar from './Sidebar'
+import StaticCard from './StaticCard'
 
 export function Classes() {
   const location = useLocation()
@@ -8,7 +10,9 @@ export function Classes() {
 
   return (
     <>
-      <TestCard id={id}></TestCard>
+      <Sidebar />
+      <StaticCard id={id} />
+      <Accordian id={id} />
     </>
   )
 }

@@ -24,5 +24,8 @@ export default {
       },
     },
   },
+  daisyui: {
+    themes: ['lofi'],
+  },
   plugins: [require('daisyui'), require('preline/plugin')],
 }
