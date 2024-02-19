@@ -2,7 +2,7 @@ import { Link, Route, Routes } from 'react-router-dom'
 import Home from './Home'
 import Curriculum from './Curriculum'
 
-const Prototype = () => {
+const Navbar = () => {
   return (
     <>
       <>
@@ -118,4 +118,4 @@ const Prototype = () => {
   )
 }
 
-export default Prototype
+export default Navbar

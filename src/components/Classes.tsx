@@ -1,6 +1,7 @@
 import { useParams, useLocation } from 'react-router-dom'
 import Accordian from './Accordian'
 import Carousel from './Carousel'
+import Sidebar from './Sidebar'
 import TestCard from './TestCard'
 
 export function Classes() {
@@ -9,8 +10,9 @@ export function Classes() {
 
   return (
     <>
-      <Accordian id={id} />
+      <Sidebar />
       <TestCard id={id} />
+      <Accordian id={id} />
     </>
   )
 }

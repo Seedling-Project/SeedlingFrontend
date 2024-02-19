@@ -24,5 +24,8 @@ export default {
       },
     },
   },
+  daisyui: {
+    themes: ['retro'],
+  },
   plugins: [require('daisyui'), require('preline/plugin')],
 }
