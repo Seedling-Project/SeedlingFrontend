@@ -11,9 +11,9 @@ export function Classes() {
   const { id } = location.state || {} // Provide a fallback object to avoid destructuring undefined
   const [loading, setLoading] = useState(true)
   const [idList, setIdList] = useState()
-  const [type, setType] = useState('Calc2')
+  const [tag, setTag] = useState('MATH-172')
 
-  const fetchAllPages = async (type: string) => {
+  const fetchAllPages = async (tag: string) => {
     try {
       const response = await ApiHandler.apiFetchPages()
       const list = response
@@ -23,10 +23,7 @@ export function Classes() {
       console.log('The first list before tag filter is: ', list)
       // Set the id list to the global state of the component so you can
       // access it anywhere within the component
-      const filteredResponse = await ApiHandler.apiFetchSpecificPages(
-        list,
-        type,
-      )
+      const filteredResponse = await ApiHandler.apiFetchSpecificPages(list, tag)
 
       const filteredList = filteredResponse?.map((item) => item.id)
       console.log('The filterdList list is: ', filteredList)
@@ -39,9 +36,9 @@ export function Classes() {
   }
 
   useEffect(() => {
-    fetchAllPages(type)
+    fetchAllPages(tag)
     console.log(`Loading is ${loading}`)
-  }, [type])
+  }, [tag])
 
   if (loading) {
     return <LoadingScreen />

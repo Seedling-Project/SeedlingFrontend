@@ -10,9 +10,7 @@ const api = axios.create({
 
 interface Page {
   id: number
-  meta: {
-    seo_title: string
-  }
+  tag: string
 }
 
 interface ApiResponse {
@@ -120,10 +118,14 @@ const ApiHandler = {
   // TODO: Find a way to integrate the apiFetchPages method to automatically
   // return the filtered list of pages so that the component doesn't have to
   // call the apiFetchPages method separately first and then call this method
-  apiFetchSpecificPages: async (list: number[], type: any) => {
+  apiFetchSpecificPages: async (type: any) => {
     try {
+      // initial fetch to get all pages from the api
+      const response = await api.get('/pages')
+      console.log('apiFetchSpecificPages: Fetched items: ', response.data.items)
+      const pageIds = response.data.items.map((item) => item.id)
       // Fetch all pages concurrently
-      const fetchPromises: Promise<ApiResponse>[] = list.map((pageId) =>
+      const fetchPromises: Promise<ApiResponse>[] = pageIds.map((pageId) =>
         api.get(`/pages/${pageId}/`),
       )
 
@@ -135,8 +137,8 @@ const ApiHandler = {
       const pages: Page[] = responses.map((response) => response.data)
       console.log('apiFetchSpecificPages: The pages are: ', pages)
 
-      // Filter pages based on the seo_title
-      const filteredPages = pages.filter((page) => page.meta.seo_title === type)
+      // Filter pages based on the subtitle
+      const filteredPages = pages.filter((page) => page.tag === type)
 
       console.log('apiFetchSpecificPages: Filtered Pages: ', filteredPages)
 

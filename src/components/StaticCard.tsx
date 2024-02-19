@@ -68,9 +68,6 @@ const StaticCard: React.FC<number> = ({ id }) => {
           <h1 className="text-3xl font-bold mb-2 font-times">
             {cardProps?.title}
           </h1>
-          <h2 className="text-xl font-semibold font-franklin">
-            {cardProps?.subtitle}
-          </h2>
           <p className="text-md mb-4 font-accent">
             {`${cardProps?.author}- ${cardProps?.date}`}
           </p>
