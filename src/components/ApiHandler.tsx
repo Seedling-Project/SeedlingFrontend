@@ -38,15 +38,14 @@ const handleDocument = async (id) => {
 // TODO: Define a way to not try to map a document and image to every page, even
 // if the page doesn't have a document and/or image
 const ApiHandler = {
-  apiFetchPage: async (type, id) => {
+  apiFetchPage: async (id) => {
     try {
-      if (type !== 'core.ContentBlock') {
-        // If not fetching a page, throw error
-        throw error
-      }
+      // Define the type of content block to fetch, in this case
+      // 'core.ContentBlock' is the page type
+      const type = 'core.ContentBlock'
       // Fetch page data
-      const pageResponse = await api.get(`/pages/${id}/`)
-      const pageData = pageResponse.data
+      const response = await api.get(`/pages/${id}/`)
+      const pageData = response.data
 
       // Check if pageData.body exists
       if (!pageData?.body) {
@@ -81,33 +80,6 @@ const ApiHandler = {
       } else {
         console.log('No documents found in pageData')
       }
-      // Assume pageData includes arrays of image and document IDs; adjust these paths as necessary
-      // Keep only items where type is 'image'
-      // Extract the 'value' from those items
-      // const imageIds = pageData?.body
-      //   ? pageData.body
-      //       .filter((item) => item.type === 'image')
-      //       .map((item) => item.value)
-      //   : console.log('No Body in pageData')
-      // console.log(`the image ID is ${imageIds}`)
-      // const documentIds = pageData?.body
-      //   ? pageData.body
-      //       .filter((item) => item.type === 'document')
-      //       .map((item) => item.value)
-      //   : console.log('No Body in pageData')
-      // console.log(`the document ID is ${documentIds}`)
-      //
-      // // Fetch URLs for all images and documents
-      // if (imageIds.length > 0) {
-      //   const imageUrls = await Promise.all(imageIds.map(handleImage))
-      // } else {
-      //   console.log('error error: ', imageIds)
-      // }
-      // if (documentIds.length > 0) {
-      //   const documentUrls = await Promise.all(documentIds.map(handleDocument))
-      // } else {
-      //   console.log('error error: ', documentIds)
-      // }
 
       // Enrich the original page data with the fetched URLs
       const enrichedPageData = {
@@ -123,7 +95,7 @@ const ApiHandler = {
     }
   },
   // Fetch all the page data at the /pages endpoint
-  apiFetchPages: async (type) => {
+  apiFetchPages: async () => {
     try {
       const response = await api.get('/pages')
       console.log(
@@ -131,6 +103,26 @@ const ApiHandler = {
         response.data.items,
       )
       return response.data.items
+    } catch (error) {
+      console.log(`Error retrieving pages: ${error}`)
+    }
+  },
+  // Fetch specific pages based on a list of IDs and a tag (e.g. 'Calc1') which
+  // wagtail uses 'seo_title'
+  apiFetchSpecificPages: async (list: number[], type: any) => {
+    try {
+      const pages = []
+      for (let i = 0; i < list.length; i++) {
+        const response = await api.get(`/pages/${list[i]}/`)
+        // console.log('Fetched Page: ', response.data)
+        pages.push(response.data)
+      }
+      console.log('Pages Before Filtering: ', pages)
+      const filteredPages = pages.filter(
+        (page: any) => page.meta.seo_title === type,
+      )
+      console.log('Filtered Pages: ', filteredPages)
+      return filteredPages
     } catch (error) {
       console.log(`Error retrieving pages: ${error}`)
     }

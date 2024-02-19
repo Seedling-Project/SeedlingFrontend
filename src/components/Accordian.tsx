@@ -6,9 +6,9 @@ const Accordian: React.FC<number> = ({ id }) => {
   const [cardProps, setCardProps] = useState()
 
   // grab the data from the API
-  const fetchData = async (type, pageID) => {
+  const fetchData = async (pageID) => {
     try {
-      const data = await ApiHandler.apiFetchPage(type, pageID)
+      const data = await ApiHandler.apiFetchPage(pageID)
       console.log('The Data for the Accordian is: ', data)
       setCardProps(data)
     } catch (error) {
@@ -17,7 +17,7 @@ const Accordian: React.FC<number> = ({ id }) => {
   }
 
   useEffect(() => {
-    fetchData('core.ContentBlock', id)
+    fetchData(id)
     console.log('The Card Props are: ', cardProps)
   }, [])
   return (

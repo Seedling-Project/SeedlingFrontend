@@ -1,21 +1,19 @@
-import { useRef, useState, useEffect } from 'react'
 import 'daisyui/dist/full.css'
+import { useEffect, useRef, useState } from 'react'
 import '../App.css'
 import '../index.css'
-import Hero from './Hero'
+import AnimatedCard from './AnimatedCard'
+import ApiHandler from './ApiHandler'
 import Card from './Card'
+import Carousel from './Carousel'
+import Hero from './Hero'
+import LoadingScreen from './LoadingScreen'
+import StaticCard from './StaticCard'
 import Timeline from './Timeline'
 import TimelineItem from './TimelineItem'
-import Carousel from './Carousel'
-import StaticCard from './StaticCard'
-import ApiHandler from './ApiHandler'
-import AnimatedCard from './AnimatedCard'
-import LoadingScreen from './LoadingScreen'
 
 function Home() {
   const timelineRef = useRef<HTMLDivElement>(null) // Create a ref for the Timeline component
-  //new axios functionality, not completely set up but this is the form
-  const [pageData, setPageData] = useState(null) // Holds the entire page data
   const [loading, setLoading] = useState(true)
   const [id, setID] = useState(7)
   const [index, setIndex] = useState(0)
@@ -26,8 +24,8 @@ function Home() {
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
   // Function for grabbing all the pages
-  const fetchAllPages = async (type) => {
-    const testPages = await ApiHandler.apiFetchPages('core.ContentBlock')
+  const fetchAllPages = async () => {
+    const testPages = await ApiHandler.apiFetchPages()
     const idList = testPages
       .filter((item) => item.id !== 2)
       .map((item) => item.id)
@@ -39,9 +37,8 @@ function Home() {
     setLoading(false)
   }
 
-  // Populate the pagesIdList
   useEffect(() => {
-    fetchAllPages('core.ContentBlock')
+    fetchAllPages()
     console.log(`Loading is ${loading}`)
   }, [])
 
