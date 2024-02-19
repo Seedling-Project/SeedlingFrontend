@@ -20,7 +20,7 @@ const Sidebar = () => {
         <ul className="menu p-4 w-1/5 min-h-full bg-base-200 text-base-content">
           {/* Sidebar content here */}
           <li>
-            <a href="#top-of-classes">Top</a>
+            <a href="#top-of-page">Top</a>
           </li>
           <li>
             <a href="#accordian">Topic</a>

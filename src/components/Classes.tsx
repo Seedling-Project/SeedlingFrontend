@@ -11,7 +11,7 @@ export function Classes() {
   const { id } = location.state || {} // Provide a fallback object to avoid destructuring undefined
   const [loading, setLoading] = useState(true)
   const [idList, setIdList] = useState()
-  const [type, setType] = useState('Calc1')
+  const [type, setType] = useState('Calc2')
 
   const fetchAllPages = async (type: string) => {
     try {
@@ -48,7 +48,7 @@ export function Classes() {
   }
 
   return (
-    <div id="top-of-classes">
+    <div id="top-of-page">
       <Sidebar />
       {idList?.map((id) => <StaticCard id={id} />)}
       <Accordian id={id} />
