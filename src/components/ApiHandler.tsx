@@ -113,12 +113,9 @@ const ApiHandler = {
       console.log(`apiFetchPages: Error retrieving pages: ${error}`)
     }
   },
-  // Fetch specific pages based on a list of IDs and a tag (e.g. 'Calc1') which
-  // wagtail uses 'seo_title'
-  // TODO: Find a way to integrate the apiFetchPages method to automatically
-  // return the filtered list of pages so that the component doesn't have to
-  // call the apiFetchPages method separately first and then call this method
-  apiFetchSpecificPages: async (type: any) => {
+
+  // Fetch specific pages based on a tag (e.g. 'MATH-172')
+  apiFetchSpecificPages: async (tag: any) => {
     try {
       // initial fetch to get all pages from the api
       const response = await api.get('/pages')
@@ -138,7 +135,7 @@ const ApiHandler = {
       console.log('apiFetchSpecificPages: The pages are: ', pages)
 
       // Filter pages based on the subtitle
-      const filteredPages = pages.filter((page) => page.tag === type)
+      const filteredPages = pages.filter((page) => page.tag === tag)
 
       console.log('apiFetchSpecificPages: Filtered Pages: ', filteredPages)
 
