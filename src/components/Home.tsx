@@ -99,7 +99,7 @@ function Home() {
   // Was used to test the Api handler, now same functionality being handled in
   // useEffect
   const testAPIFunction = async () => {
-    const testPages = await ApiHandler.apiFetchPages('core.ContentBlock')
+    const testPages = await ApiHandler.apiFetchPages()
     const pagesIDList = testPages.map((i) => i.id)
 
     // Set the id list to the global state of the component so you can

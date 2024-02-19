@@ -8,6 +8,17 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 })
 
+interface Page {
+  id: number
+  meta: {
+    seo_title: string
+  }
+}
+
+interface ApiResponse {
+  data: Page
+}
+
 // Function to fetch image data based on the provided ID (Value from pages maps
 // to the ID of the image or document)
 const handleImage = async (id) => {
@@ -64,7 +75,7 @@ const ApiHandler = {
         imageUrls = await Promise.all(imageIds.map(handleImage))
         console.log(`The image URLs are ${imageUrls}`)
       } else {
-        console.log('No images found in pageData')
+        console.log('apiFetchPage: No images found in pageData')
       }
 
       // Filter and map document IDs from pageData.body
@@ -76,9 +87,9 @@ const ApiHandler = {
       let documentUrls = []
       if (documentIds.length > 0) {
         documentUrls = await Promise.all(documentIds.map(handleDocument))
-        console.log(`The document URLs are ${documentUrls}`)
+        console.log(`apiFetchPage: The document URLs are ${documentUrls}`)
       } else {
-        console.log('No documents found in pageData')
+        console.log('apiFetchPage: No documents found in pageData')
       }
 
       // Enrich the original page data with the fetched URLs
@@ -90,7 +101,7 @@ const ApiHandler = {
 
       return enrichedPageData
     } catch (error) {
-      console.error('Error fetching data: ', error)
+      console.error('apiFetchPage: Error fetching data: ', error)
       throw error
     }
   },
@@ -98,33 +109,40 @@ const ApiHandler = {
   apiFetchPages: async () => {
     try {
       const response = await api.get('/pages')
-      console.log(
-        'The API handler is returning the following items: ',
-        response.data.items,
-      )
+      console.log('apiFetchPages: Fetched items: ', response.data.items)
       return response.data.items
     } catch (error) {
-      console.log(`Error retrieving pages: ${error}`)
+      console.log(`apiFetchPages: Error retrieving pages: ${error}`)
     }
   },
   // Fetch specific pages based on a list of IDs and a tag (e.g. 'Calc1') which
   // wagtail uses 'seo_title'
+  // TODO: Find a way to integrate the apiFetchPages method to automatically
+  // return the filtered list of pages so that the component doesn't have to
+  // call the apiFetchPages method separately first and then call this method
   apiFetchSpecificPages: async (list: number[], type: any) => {
     try {
-      const pages = []
-      for (let i = 0; i < list.length; i++) {
-        const response = await api.get(`/pages/${list[i]}/`)
-        // console.log('Fetched Page: ', response.data)
-        pages.push(response.data)
-      }
-      console.log('Pages Before Filtering: ', pages)
-      const filteredPages = pages.filter(
-        (page: any) => page.meta.seo_title === type,
+      // Fetch all pages concurrently
+      const fetchPromises: Promise<ApiResponse>[] = list.map((pageId) =>
+        api.get(`/pages/${pageId}/`),
       )
-      console.log('Filtered Pages: ', filteredPages)
+
+      // Wait for all fetch operations to complete
+      const responses = await Promise.all(fetchPromises)
+      console.log('apiFetchSpecificPages: The responses are: ', responses)
+
+      // Extract pages from responses
+      const pages: Page[] = responses.map((response) => response.data)
+      console.log('apiFetchSpecificPages: The pages are: ', pages)
+
+      // Filter pages based on the seo_title
+      const filteredPages = pages.filter((page) => page.meta.seo_title === type)
+
+      console.log('apiFetchSpecificPages: Filtered Pages: ', filteredPages)
+
       return filteredPages
     } catch (error) {
-      console.log(`Error retrieving pages: ${error}`)
+      console.log(`apiFetchSpecificPages: Error retrieving pages: ${error}`)
     }
   },
 }
