@@ -57,19 +57,23 @@ const TestCard: React.FC<number> = ({ id }) => {
 
   const ref = useRef<HTMLDivElement>(null)
   const [opacity, setOpacity] = useSpring(() => ({ value: 0 }))
- 
+
   return (
     <MathJaxContext config={config}>
       <animated.div
         ref={ref}
-        className="bg-white text-gray-800 max-w-3xl mx-auto my-8 p-8 rounded-lg shadow-lg">
+        className="bg-white text-gray-800 max-w-3xl mx-auto my-8 p-8 rounded-lg shadow-lg"
+      >
         <div className="text-center mb-4">
-          <h1 className="text-3xl font-bold mb-2 font-times">{cardProps?.title}</h1>
-          <h2 className="text-xl font-semibold font-franklin">{cardProps?.subtitle}</h2>
+          <h1 className="text-3xl font-bold mb-2 font-times">
+            {cardProps?.title}
+          </h1>
+          <h2 className="text-xl font-semibold font-franklin">
+            {cardProps?.subtitle}
+          </h2>
           <p className="text-md mb-4 font-accent">
             {`${cardProps?.author}- ${cardProps?.date}`}
-           </p> 
-          
+          </p>
         </div>
         <div className="text-left font-body">
           {/* Render each block */}
@@ -90,8 +94,7 @@ const TestCard: React.FC<number> = ({ id }) => {
             ))}
           </div>
         </div>
-        </animated.div>
-      
+      </animated.div>
     </MathJaxContext>
   )
 }
