@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <>
       <>
-        <div className="navbar bg-base-100 flex justify-evenly items-center w-full">
+        <div className="navbar bg-base-100 flex justify-evenly items-center w-full fixed top-0 left-0 lg:px-20  z-50">
           <div className="navbar-start  lg:justify-start flex justify-around items-center w-full">
             <div className="dropdown mr-100px">
               <div
