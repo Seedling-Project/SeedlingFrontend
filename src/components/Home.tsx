@@ -141,11 +141,6 @@ function Home() {
 
   return (
     <>
-      {/* <div> */}
-      {/*   <button className="btn btn-wide btn-accent" onClick={testAPIFunction}> */}
-      {/*     Test Api Function */}
-      {/*   </button> */}
-      {/* </div> */}
       <Hero onButtonClick={scrollToTimeline} />
       <Timeline ref={timelineRef}>
         {timelineDetails.map((item, index) => (
