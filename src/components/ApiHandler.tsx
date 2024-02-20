@@ -58,7 +58,7 @@ const ApiHandler = {
 
       // Check if pageData.body exists
       if (!pageData?.body) {
-        console.log('No Body in pageData')
+        console.log('<ApiHandler.tsx> apiFetchPage no body in pageData')
         return
       }
 
@@ -71,9 +71,11 @@ const ApiHandler = {
       let imageUrls = []
       if (imageIds.length > 0) {
         imageUrls = await Promise.all(imageIds.map(handleImage))
-        console.log(`The image URLs are ${imageUrls}`)
+        console.log(
+          `<ApiHandler.tsx> apiFetchPage The image URLs are ${imageUrls}`,
+        )
       } else {
-        console.log('apiFetchPage: No images found in pageData')
+        console.log('<ApiHandler.tsx> apiFetchPage no images found in pageData')
       }
 
       // Filter and map document IDs from pageData.body
@@ -85,9 +87,13 @@ const ApiHandler = {
       let documentUrls = []
       if (documentIds.length > 0) {
         documentUrls = await Promise.all(documentIds.map(handleDocument))
-        console.log(`apiFetchPage: The document URLs are ${documentUrls}`)
+        console.log(
+          `<ApiHandler.tsx> apiFetchPage the document URLs are ${documentUrls}`,
+        )
       } else {
-        console.log('apiFetchPage: No documents found in pageData')
+        console.log(
+          '<ApiHandler.tsx> apiFetchPage no documents found in pageData',
+        )
       }
 
       // Enrich the original page data with the fetched URLs
@@ -107,10 +113,15 @@ const ApiHandler = {
   apiFetchPages: async () => {
     try {
       const response = await api.get('/pages')
-      console.log('apiFetchPages: Fetched items: ', response.data.items)
+      console.log(
+        '<ApiHandler.tsx> apiFetchPages fetched items: ',
+        response.data.items,
+      )
       return response.data.items
     } catch (error) {
-      console.log(`apiFetchPages: Error retrieving pages: ${error}`)
+      console.log(
+        `<ApiHandler.tsx> apiFetchPages error retrieving pages: ${error}`,
+      )
     }
   },
 
@@ -119,7 +130,10 @@ const ApiHandler = {
     try {
       // initial fetch to get all pages from the api
       const response = await api.get('/pages')
-      console.log('apiFetchSpecificPages: Fetched items: ', response.data.items)
+      console.log(
+        '<ApiHandler.tsx> apiFetchSpecificPages fetched items: ',
+        response.data.items,
+      )
       const pageIds = response.data.items.map((item) => item.id)
       // Fetch all pages concurrently
       const fetchPromises: Promise<ApiResponse>[] = pageIds.map((pageId) =>
@@ -128,20 +142,31 @@ const ApiHandler = {
 
       // Wait for all fetch operations to complete
       const responses = await Promise.all(fetchPromises)
-      console.log('apiFetchSpecificPages: The responses are: ', responses)
+      console.log(
+        '<ApiHandler.tsx> apiFetchSpecificPages responses are: ',
+        responses,
+      )
 
       // Extract pages from responses
       const pages: Page[] = responses.map((response) => response.data)
-      console.log('apiFetchSpecificPages: The pages are: ', pages)
+      console.log(
+        '<ApiHandler.tsx> apiFetchSpecificPages the pages are: ',
+        pages,
+      )
 
       // Filter pages based on the subtitle
       const filteredPages = pages.filter((page) => page.tag === tag)
 
-      console.log('apiFetchSpecificPages: Filtered Pages: ', filteredPages)
+      console.log(
+        '<ApiHandler.tsx> apiFetchSpecificPages filtered Pages: ',
+        filteredPages,
+      )
 
       return filteredPages
     } catch (error) {
-      console.log(`apiFetchSpecificPages: Error retrieving pages: ${error}`)
+      console.log(
+        `<ApiHandler.tsx> apiFetchSpecificPages error retrieving pages: ${error}`,
+      )
     }
   },
 }

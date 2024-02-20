@@ -30,7 +30,7 @@ function Home() {
       .filter((item) => item.id !== 2)
       .map((item) => item.id)
 
-    console.log('The idList is: ', idList)
+    console.log('<Home.tsx> The idList is: ', idList)
     // Set the id list to the global state of the component so you can
     // access it anywhere within the component
     setPagesIdList(idList)
@@ -39,7 +39,7 @@ function Home() {
 
   useEffect(() => {
     fetchAllPages()
-    console.log(`Loading is ${loading}`)
+    console.log(`<Home.tsx> Loading is ${loading}`)
   }, [])
 
   if (loading) {
@@ -53,7 +53,7 @@ function Home() {
 
     // Use a callback in setID to ensure it uses the updated index
     setID((prevState) => pagesIdList[(index + 1) % pagesIdList.length])
-    console.log(`Next ID: ${id}`)
+    console.log(`<Home.tsx> Next ID: ${id}`)
   }
   // TODO: Fix this function for a next page button
   // const handleNextPage = () => {
@@ -82,7 +82,7 @@ function Home() {
       (prevState) =>
         pagesIdList[(index - 1 + pagesIdList.length) % pagesIdList.length],
     )
-    console.log(`Previous ID: ${id}`)
+    console.log(`<Home.tsx> Previous ID: ${id}`)
   }
 
   // // TODO: Fix this function for a previous page button

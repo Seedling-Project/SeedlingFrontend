@@ -9,7 +9,7 @@ const Accordian: React.FC<number> = ({ id }) => {
   const fetchData = async (pageID) => {
     try {
       const data = await ApiHandler.apiFetchPage(pageID)
-      console.log('The Data for the Accordian is: ', data)
+      console.log('<Accordian.tsx> The Data for the Accordian is: ', data)
       setCardProps(data)
     } catch (error) {
       console.error('Error in fetching data:', error)
@@ -18,7 +18,7 @@ const Accordian: React.FC<number> = ({ id }) => {
 
   useEffect(() => {
     fetchData(id)
-    console.log('The Card Props are: ', cardProps)
+    console.log('<Accordian.tsx> The Card Props are: ', cardProps)
   }, [])
   return (
     <div id="accordian" className="collapse bg-base-200">
