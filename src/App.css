@@ -18,7 +18,12 @@ br {
   list-style-type: disc; /* Ensures bullet points are shown */
   padding-left: 1.5em; /* Adjust for appropriate indentation */
 }
-
+.text-left ol {
+  list-style-type: decimal;
+}
+.text-left ol ol {
+  list-style-type: lower-alpha; /* Or another type, like lower-alpha, etc. */
+}
 .text-left ul ul {
   list-style-type: circle; /* Different style for nested lists, if desired */
 }
@@ -26,6 +31,32 @@ br {
 .text-left li {
   margin-bottom: 0.5em; /* Space between list items */
 }
+p {
+  margin-bottom: 16px; /* Adjust the bottom margin to control space between paragraphs */
+  /* Or use padding for internal spacing */
+}
+/* Unvisited links */
+a:link {
+  color: blue; /* Change to your preferred color */
+  text-decoration: none; /* Removes underline, add if you prefer */
+}
+
+/* Visited links */
+a:visited {
+  color: purple; /* Change to your preferred color */
+}
+
+/* Mouse over links */
+a:hover {
+  color: red; /* Change to your preferred color */
+  text-decoration: underline; /* Adds underline on hover */
+}
+
+/* Selected links */
+a:active {
+  color: yellow; /* Change to your preferred color */
+}
+
 
 
 .logo {
