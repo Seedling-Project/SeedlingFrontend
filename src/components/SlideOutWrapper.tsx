@@ -45,22 +45,22 @@ const SlideOutWrapper: React.FC<SlideOutWrapperProps> = ({ children }) => {
     transform: isVisible
       ? `translate3d(${
           breakpoint === 'sm'
-            ? '1%'
+            ? '0.5%'
             : breakpoint === 'md'
-              ? '1%'
+              ? '0.5%'
               : breakpoint === 'md-plus'
-                ? '12%'
+                ? '0.5%'
                 : breakpoint === 'lg'
-                  ? '20%'
+                  ? '5%'
                   : breakpoint === '0.5xl'
-                    ? '30%'
+                    ? '10%'
                     : breakpoint === 'xl'
-                      ? '40%'
+                      ? '20%'
                       : breakpoint === '1.5xl'
-                        ? '40%'
+                        ? '20%'
                         : breakpoint === '2xl'
-                          ? '50%'
-                          : '60%' // New value for 3xl breakpoint
+                          ? '25%'
+                          : '25%' // New value for 3xl breakpoint
         },0,0)`
       : 'translate3d(-5%,0,0)',
     config: { duration: 700 },
