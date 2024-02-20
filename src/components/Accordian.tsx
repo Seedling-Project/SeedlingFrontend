@@ -28,8 +28,7 @@ const Accordian: React.FC<number> = ({ id }) => {
         {cardProps?.title}
       </div>
       <div className="collapse-content">
-        <StaticCard id={id} />
-        <StaticCard id={id + 1} />
+        <iframe src={cardProps?.documentUrls} title={cardProps?.title} />
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Accordian from './Accordian'
+import AnimatedCard from './AnimatedCard'
 import ApiHandler from './ApiHandler'
 import LoadingScreen from './LoadingScreen'
 import Sidebar from './Sidebar'
