@@ -3,23 +3,23 @@ const Footer: React.FC = () => {
     <footer
       className="footer footer-center p-10 text-primary-content"
       style={{
-        width: "100%",
+        width: '100%',
       }}
     >
       <aside
         style={{
-          display: "flex",
-          justifyContent: "left",
-          alignItems: "center",
-          width: "100%",
+          display: 'flex',
+          justifyContent: 'left',
+          alignItems: 'center',
+          width: '100%',
         }}
       >
-        <p>
+        <p className="text-black font-franklin">
           Copyright © 2024 Seedling Education - All rights reserved
         </p>
       </aside>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

@@ -127,15 +127,19 @@ function Home() {
   const timelineDetails = [
     {
       icon: '/additional-logo.png', // Replace with actual icon paths or import statements
-      content: <AnimatedCard id="19" />,
+      content: <AnimatedCard id="32" />,
     },
     {
       icon: '/additional-logo.png', // Replace with actual icon paths or import statements
-      content: <StaticCard id="20" />,
+      content: <AnimatedCard id="33" />,
     },
     {
       icon: '/additional-logo.png', // Replace with actual icon paths or import statements
-      content: <AnimatedCard id="19" />,
+      content: <AnimatedCard id="34" />,
+    },
+    {
+      icon: '/additional-logo.png', // Replace with actual icon paths or import statements
+      content: <AnimatedCard id="35" />,
     },
   ]
 
