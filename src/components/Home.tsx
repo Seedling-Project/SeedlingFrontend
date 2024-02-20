@@ -146,6 +146,7 @@ function Home() {
   return (
     <>
       <Hero onButtonClick={scrollToTimeline} />
+      <StaticCard id="31" className="pb-10"></StaticCard>
       <Timeline ref={timelineRef}>
         {timelineDetails.map((item, index) => (
           <TimelineItem
