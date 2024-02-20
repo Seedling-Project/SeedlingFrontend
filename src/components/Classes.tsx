@@ -9,9 +9,10 @@ import StaticCard from './StaticCard'
 export function Classes() {
   const location = useLocation()
   const { id } = location.state || {} // Provide a fallback object to avoid destructuring undefined
+  const { courseCode } = location.state || {}
   const [loading, setLoading] = useState(true)
   const [idList, setIdList] = useState()
-  const [tag, setTag] = useState('MATH-191')
+  const [tag, setTag] = useState()
 
   const fetchAllPages = async (tag: string) => {
     try {
@@ -27,9 +28,10 @@ export function Classes() {
   }
 
   useEffect(() => {
+    setTag(courseCode)
     fetchAllPages(tag)
     console.log(`Loading is ${loading}`)
-  }, [tag])
+  }, [])
 
   if (loading) {
     return <LoadingScreen />
