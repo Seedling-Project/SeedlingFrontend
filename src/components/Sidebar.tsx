@@ -1,6 +1,6 @@
 const Sidebar = () => {
   return (
-    <div className="drawer">
+    <div className="drawer" style={{ position: 'relative', zIndex: 1000 }}>
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Page content here */}

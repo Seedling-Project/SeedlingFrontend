@@ -34,15 +34,15 @@ const calc = (x: number, y: number, rect: DOMRect) => {
 
 const AnimatedCard: React.FC<number> = ({ id }) => {
   const [cardProps, setCardProps] = useState()
-  console.log('The TestCard ID is: ', id)
+  console.log('<AnimatedCard.tsx> The ID is: ', id)
 
   const fetchData = async (pageID) => {
     try {
       const data = await ApiHandler.apiFetchPage(pageID)
-      console.log('The Data is: ', data)
+      console.log('<AnimatedCard.tsx> The Data is: ', data)
       setCardProps(data)
     } catch (error) {
-      console.error('Error in TestCard fetching data:', error)
+      console.error('<AnimatedCard.tsx> Error fetching data:', error)
     }
   }
 
@@ -63,7 +63,7 @@ const AnimatedCard: React.FC<number> = ({ id }) => {
   }
   useEffect(() => {
     fetchData(id)
-    console.log('The Card Props are: ', cardProps)
+    console.log('<AnimatedCard.tsx> The Card Props are: ', cardProps)
     if (cardProps?.body) {
       renderBlock(cardProps.body)
     }
