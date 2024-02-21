@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Accordian from './Accordian'
+import AnimatedCard from './AnimatedCard'
 import ApiHandler from './ApiHandler'
 import LoadingScreen from './LoadingScreen'
 import Sidebar from './Sidebar'
@@ -12,13 +13,12 @@ export function Classes() {
   const { courseCode } = location.state || {}
   const [loading, setLoading] = useState(true)
   const [idList, setIdList] = useState()
-  const [tag, setTag] = useState()
 
   const fetchAllPages = async (tag: string) => {
     try {
-      const response = await ApiHandler.apiFetchSpecificPages(tag)
+      const response = await ApiHandler.apiFetchTag(tag)
       const list = response?.map((item) => item.id)
-      console.log('Classes: The ID list is: ', list)
+      console.log('<Classes.tsx> The ID list is: ', list)
       setIdList(list)
       setLoading(false)
     } catch (error) {
@@ -28,9 +28,9 @@ export function Classes() {
   }
 
   useEffect(() => {
-    setTag(courseCode)
-    fetchAllPages(tag)
-    console.log(`Loading is ${loading}`)
+    console.log('<Classes.tsx> The tag is: ', courseCode)
+    fetchAllPages(courseCode)
+    console.log(`<Classes.tsx> Loading is ${loading}`)
   }, [])
 
   if (loading) {

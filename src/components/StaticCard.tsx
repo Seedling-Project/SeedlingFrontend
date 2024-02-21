@@ -20,15 +20,15 @@ declare global {
 
 const StaticCard: React.FC<number> = ({ id }) => {
   const [cardProps, setCardProps] = useState()
-  console.log('The TestCard ID is: ', id)
+  console.log('<StaticCard.tsx> The TestCard ID is: ', id)
 
   const fetchData = async (pageID) => {
     try {
       const data = await ApiHandler.apiFetchPage(pageID)
-      console.log('The Data is: ', data)
+      console.log('<StaticCard.tsx> The Data is: ', data)
       setCardProps(data)
     } catch (error) {
-      console.error('Error in TestCard fetching data:', error)
+      console.error('<StaticCard.tsx> Error fetching data:', error)
     }
   }
 
@@ -49,7 +49,7 @@ const StaticCard: React.FC<number> = ({ id }) => {
   }
   useEffect(() => {
     fetchData(id)
-    console.log('The Card Props are: ', cardProps)
+    console.log('<StaticCard.tsx> The Card Props are: ', cardProps)
     if (cardProps?.body) {
       renderBlock(cardProps.body)
     }
