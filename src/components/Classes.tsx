@@ -41,8 +41,10 @@ export function Classes() {
   return (
     <div id="top-of-page">
       <Sidebar />
-      {idList?.map((id) => <StaticCard id={id} />)}
-      <Accordian id={id} />
+      <StaticCard id={idList[0]} />
+      {idList
+        ?.filter((id) => id !== idList[0])
+        .map((id) => <Accordian id={id} />)}
     </div>
   )
 }

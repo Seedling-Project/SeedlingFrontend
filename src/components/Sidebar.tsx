@@ -6,7 +6,7 @@ const Sidebar = () => {
         {/* Page content here */}
         <label
           htmlFor="my-drawer"
-          className="btn fixed inset-y-44 right-36 font-accent btn-ghost btn-primary drawer-button"
+          className="btn fixed inset-y-44 right-16 font-accent btn-ghost btn-primary drawer-button"
         >
           Table of Contents
         </label>
