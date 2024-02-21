@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useLocation } from 'react-router-dom'
 import Accordian from './Accordian'
 import ApiHandler from './ApiHandler'
 import LoadingScreen from './LoadingScreen'
@@ -8,7 +8,7 @@ import StaticCard from './StaticCard'
 
 export function Classes() {
   const location = useLocation()
-  const { id } = location.state || {} // Provide a fallback object to avoid destructuring undefined
+  const { id } = useParams() // Provide a fallback object to avoid destructuring undefined
   const { courseCode } = location.state || {}
   const [loading, setLoading] = useState(true)
   const [idList, setIdList] = useState()
