@@ -169,6 +169,22 @@ const ApiHandler = {
       )
     }
   },
+
+  // make a new endpoint to grab requeats
+  apiFetchTag: async (tag: any) => {
+    try {
+      const response = await api.get(
+        `/pages/?type=core.ContentBlock&tag=${tag}`,
+      )
+      console.log('<ApiHandler.tsx> apiFetchTag returned: ', response)
+      return response.data.items
+    } catch (error) {
+      console.log(
+        '<ApiHandler.txt> apiFetchTag failed to retrieve data: ',
+        error,
+      )
+    }
+  },
 }
 
 export default ApiHandler

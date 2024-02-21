@@ -16,7 +16,7 @@ export function Classes() {
 
   const fetchAllPages = async (tag: string) => {
     try {
-      const response = await ApiHandler.apiFetchSpecificPages(tag)
+      const response = await ApiHandler.apiFetchTag(tag)
       const list = response?.map((item) => item.id)
       console.log('<Classes.tsx> The ID list is: ', list)
       setIdList(list)
