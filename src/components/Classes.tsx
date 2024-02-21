@@ -41,7 +41,7 @@ export function Classes() {
     <div id="top-of-page">
       <Sidebar />
       {idList?.map((id) => <StaticCard id={id} />)}
-      <Accordian id={id} />
+      <Accordian id={45} />
     </div>
   )
 }

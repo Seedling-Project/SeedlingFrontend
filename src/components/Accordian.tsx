@@ -19,16 +19,22 @@ const Accordian: React.FC<number> = ({ id }) => {
   useEffect(() => {
     fetchData(id)
     console.log('<Accordian.tsx> The Card Props are: ', cardProps)
-  }, [])
+  }, [id])
   return (
-    <div id="accordian" className="collapse bg-base-200">
-      <input type="checkbox" />
-      <div className="collapse-title text-xl font-medium">
-        <i className="fas fa-angle-down mr-2"></i>
-        {cardProps?.title}
-      </div>
-      <div className="collapse-content">
-        <iframe src={cardProps?.documentUrls} title={cardProps?.title} />
+    <div className="flex justify-center w-full">
+      <div id="accordian" className="collapse bg-base-200 w-3/4">
+        <input type="checkbox" className="peer" />
+        <div className="collapse-title text-xl font-medium">
+          <i className="fas fa-angle-down mr-2"></i>
+          {cardProps?.title}
+        </div>
+        <div className="collapse-content flex items-center w-full overflow-hidden">
+          <iframe
+            src={cardProps?.documentUrls}
+            title={cardProps?.title}
+            className="w-full h-full min-h-[75vh] min-w-full border-none aspect-video"
+          />
+        </div>
       </div>
     </div>
   )
