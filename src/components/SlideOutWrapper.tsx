@@ -59,8 +59,8 @@ const SlideOutWrapper: React.FC<SlideOutWrapperProps> = ({ children }) => {
                       : breakpoint === '1.5xl'
                         ? '20%'
                         : breakpoint === '2xl'
-                          ? '25%'
-                          : '25%' // New value for 3xl breakpoint
+                          ? '21%'
+                          : '21%' // New value for 3xl breakpoint
         },0,0)`
       : 'translate3d(-5%,0,0)',
     config: { duration: 700 },
