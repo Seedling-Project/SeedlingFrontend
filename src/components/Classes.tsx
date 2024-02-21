@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import Accordian from './Accordian'
 import AnimatedCard from './AnimatedCard'
 import ApiHandler from './ApiHandler'
@@ -9,10 +9,11 @@ import StaticCard from './StaticCard'
 
 export function Classes() {
   const location = useLocation()
-  const { id } = location.state || {} // Provide a fallback object to avoid destructuring undefined
-  const { courseCode } = location.state || {}
+  const { id } = useParams // Provide a fallback object to avoid destructuring undefined
+  const courseCode = location.state?.courseCode
   const [loading, setLoading] = useState(true)
-  const [idList, setIdList] = useState()
+  const [idList, setIdList] = useState([])
+  const [tag, setTag] = useState(courseCode)
 
   const fetchAllPages = async (tag: string) => {
     try {
