@@ -81,10 +81,10 @@ const Navbar = () => {
                 <Link to="/curriculum/*">Curriculum</Link>
               </li>
               <li className="font-accent">
-                <Link to="/transfer">Research</Link>
+                <Link to="/transfer">Research (UG)</Link>
               </li>
               <li className="font-accent">
-                <Link to="/transfer">Opportunities</Link>
+                <Link to="/transfer">Miscellaneous</Link>
               </li>
             </ul>
             <button className="btn btn-ghost btn-circle ">
