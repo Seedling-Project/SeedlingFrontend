@@ -9,7 +9,7 @@ import StaticCard from './StaticCard'
 
 export function Classes() {
   const location = useLocation()
-  const { id } = useParams // Provide a fallback object to avoid destructuring undefined
+  const { id } = useParams() // Provide a fallback object to avoid destructuring undefined
   const courseCode = location.state?.courseCode
   const [loading, setLoading] = useState(true)
   const [idList, setIdList] = useState([])
@@ -27,24 +27,49 @@ export function Classes() {
       setLoading(false)
     }
   }
+  const id_dictionary: { [key: number]: string } = {
+    6: 'MATH-172',
+    8: 'MATH-161',
+    9: 'MATH-171',
+    10: 'MATH-173',
+    11: 'MATH-191',
+    12: 'MATH-193',
+    13: 'MATH-134',
+    14: 'PHYS-101',
+    15: 'PHYS-102',
+    16: 'PHYS-103',
+    17: 'CHEM-101',
+    18: 'CHEM-102',
+    19: 'CHEM-112',
+    20: 'CHEM-113',
+    21: 'BIO-101',
+    22: 'BOT-101',
+    23: 'ZOOL-101',
+  }
 
   useEffect(() => {
-    console.log('<Classes.tsx> The tag is: ', courseCode)
-    fetchAllPages(courseCode)
-    console.log(`<Classes.tsx> Loading is ${loading}`)
-  }, [])
-
-  if (loading) {
-    return <LoadingScreen />
-  }
+    let effectiveTag = courseCode
+    if (!effectiveTag && id) {
+      // Convert id from URL to number and look up tag in dictionary
+      const numericId = parseInt(id, 10)
+      effectiveTag = id_dictionary[numericId]
+    }
+    console.log('<Classes.tsx> The effective tag is: ', effectiveTag)
+    if (effectiveTag) {
+      fetchAllPages(effectiveTag) // Use effectiveTag instead of courseCode
+    } else {
+      console.log('No effective tag found for fetching.')
+      setLoading(false) // Ensure loading is set to false if there's no tag to fetch data for
+    }
+  }, [id, courseCode])
 
   return (
     <div id="top-of-page">
       <Sidebar />
-      <StaticCard id={idList[0]} />
+      <StaticCard id={parseInt(id, 10)} />
       {idList
-        ?.filter((id) => id !== idList[0])
-        .map((id) => <Accordian id={id} />)}
+        ?.filter((itemId) => itemId !== idList[0])
+        .map((itemId) => <Accordian key={itemId} id={itemId} />)}
     </div>
   )
 }
