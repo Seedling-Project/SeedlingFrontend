@@ -40,7 +40,7 @@ const Navbar = () => {
                   <Link to="/curriculum">Curriculum</Link>
                 </li>
                 <li>
-                  <Link to="/transfer">Opportunities</Link>
+                  <Link to="/transfer">Research (UG)</Link>
                 </li>
                 <li>
                   <Link to="/research">Miscellaneous</Link>
