@@ -1,18 +1,17 @@
-import StaticCard from './StaticCard'
-import AnimatedCard from './AnimatedCard'
+import MiscCard from './MiscCard'
 
 const Research = () => {
   return (
     <>
       <div id="row" className="flex justify-around w-full">
         <div id="leftCol" className="w-1/3 px-2">
-          <AnimatedCard id="9" />
+          <MiscCard id="9" />
         </div>
         <div id="middleCol" className="w-1/3 px-2">
-          <AnimatedCard id="10" />
+          <MiscCard id="10" />
         </div>
         <div id="rightCol" className="w-1/3 px-2">
-          <AnimatedCard id="11" />
+          <MiscCard id="11" />
         </div>
       </div>
     </>
