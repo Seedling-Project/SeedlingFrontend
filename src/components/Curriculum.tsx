@@ -107,7 +107,7 @@ const Curriculum: React.FC = () => {
             {/* Elementary Statistics */}
             <tr
               className="hover:cursor-pointer"
-              onClick={() => handleRowClick('/classes/13')}
+              onClick={() => handleRowClick('/classes/13', 'MATH-134:')}
             >
               <th>7</th>
               <td>MATH-134: Elementary Statistics</td>
