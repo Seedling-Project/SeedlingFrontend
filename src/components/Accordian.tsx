@@ -32,7 +32,7 @@ const Accordian: React.FC<number> = ({ id }) => {
           <iframe
             src={cardProps?.documentUrls}
             title={cardProps?.title}
-            className="w-full h-full min-h-[75vh] min-w-full border-none aspect-video"
+            className="lg-w-full lg-h-full min-h-[75vh] min-w-full border-none aspect-video"
           />
         </div>
       </div>
