@@ -1,12 +1,14 @@
 import { Link, Route, Routes } from 'react-router-dom'
 import Home from './Home'
 import Curriculum from './Curriculum'
+import Research from './Research'
+import Miscellaneous from './Miscellaneous'
 
 const Navbar = () => {
   return (
     <>
       <>
-        <div className="navbar bg-base-100 flex justify-evenly items-center w-full fixed top-0 left-0 lg:px-20  z-50">
+        <div className="navbar bg-base-100 flex justify-evenly items-center w-full top-0 left-0 lg:px-20  z-50">
           <div className="navbar-start  lg:justify-start flex justify-around items-center w-full">
             <div className="dropdown mr-100px">
               <div
@@ -40,7 +42,7 @@ const Navbar = () => {
                   <Link to="/curriculum">Curriculum</Link>
                 </li>
                 <li>
-                  <Link to="/transfer">Research (UG)</Link>
+                  <Link to="/research">Research (UG)</Link>
                 </li>
                 <li>
                   <Link to="/research">Miscellaneous</Link>
@@ -81,10 +83,10 @@ const Navbar = () => {
                 <Link to="/curriculum/*">Curriculum</Link>
               </li>
               <li className="font-accent">
-                <Link to="/transfer">Research (UG)</Link>
+                <Link to="/research">Research (UG)</Link>
               </li>
               <li className="font-accent">
-                <Link to="/transfer">Miscellaneous</Link>
+                <Link to="/miscellaneous">Miscellaneous</Link>
               </li>
             </ul>
             <button className="btn btn-ghost btn-circle ">
@@ -110,8 +112,8 @@ const Navbar = () => {
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Home />} />
           <Route path="/curriculum/*" element={<Curriculum />} />
-          <Route path="/research" element={<Home />} />
-          <Route path="/other" element={<Home />} />
+          <Route path="/research" element={<Research />} />
+          <Route path="/miscellaneous" element={<Miscellaneous />} />
         </Routes>
       </>
     </>
