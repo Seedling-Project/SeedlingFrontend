@@ -26,7 +26,7 @@ const Curriculum: React.FC = () => {
   return (
     <>
       <h1 className="text-4xl font-bold leading-tight text-gray-900">
-        Curriculum Subjects
+        Curriculum Subjectss
       </h1>
       <h2 className="pt-6 pb-2 text-3xl font-semibold leading-snug text-gray-700">
         Mathematics
