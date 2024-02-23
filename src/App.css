@@ -84,20 +84,6 @@ a:active {
     animation: logo-spin infinite 20s linear;
   }
 }
-/* .iframe-container { */
-/*   display: flex; /* Enables flexbox */
-*/
-/*   justify-content: center; /* Centers iframe horizontally */ */
-/*   align-items: center; /* Centers iframe vertically */ */
-/*   height: 100vh; /* Sets the container height to fill the viewport */ */
-/* } */
-/**/
-/* iframe { */
-/*   width: 100%; /* Makes the iframe's width flexible */ */
-/*   height: 100%; /* Adjusts the iframe's height to fill the container */ */
-/*   max-width: 600px; /* Optional: sets a max-width for the iframe */ */
-/*   max-height: 400px; /* Optional: sets a max-height for the iframe */ */
-/* } */
 
 .card {
   padding: 2em;
@@ -105,4 +91,31 @@ a:active {
 
 .read-the-docs {
   color: #888;
+}
+
+.card-content {
+  @apply overflow-hidden relative;
+  min-height: 20rem; /* Adjust based on your needs */
+}
+
+.card-container {
+  max-height: 25rem;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer; /* Indicates the card is clickable */
+  margin-bottom: 5rem; /* Space between cards */
+}
+
+.card-container.expanded {
+  max-height: none;
+  cursor: default; /* Change cursor to indicate it's no longer expandable */
+}
+
+.card-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px; /* Height of the fade effect */
+  background: linear-gradient(to bottom, transparent, white);
 }

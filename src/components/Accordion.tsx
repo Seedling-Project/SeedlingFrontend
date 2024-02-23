@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import ApiHandler from './ApiHandler'
 import StaticCard from './StaticCard'
 
-const Accordian: React.FC<number> = ({ id }) => {
+const Accordion: React.FC<number> = ({ id }) => {
   const [cardProps, setCardProps] = useState()
 
   // grab the data from the API
@@ -40,4 +40,4 @@ const Accordian: React.FC<number> = ({ id }) => {
   )
 }
 
-export default Accordian
+export default Accordion

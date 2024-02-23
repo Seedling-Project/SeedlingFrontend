@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
-import Accordian from './Accordian'
+import Accordion from './Accordion'
 import AnimatedCard from './AnimatedCard'
 import ApiHandler from './ApiHandler'
 import LoadingScreen from './LoadingScreen'
@@ -68,7 +68,7 @@ export function Classes() {
       <StaticCard id={parseInt(id, 10)} />
       {idList
         ?.filter((itemId) => itemId !== idList[0])
-        .map((itemId) => <Accordian key={itemId} id={itemId} />)}
+        .map((itemId) => <Accordion key={itemId} id={itemId} />)}
     </div>
   )
 }
