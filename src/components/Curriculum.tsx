@@ -29,7 +29,7 @@ const Curriculum: React.FC = () => {
         Curriculum Subjects
       </h1>
       <h2 className="pt-6 pb-2 text-3xl font-semibold leading-snug text-gray-700">
-        Mathematics
+        Mathematicss
       </h2>
       <div className="overflow-x-auto">
         <table className="table">

@@ -65,7 +65,6 @@ export function Classes() {
 
   return (
     <div id="top-of-page">
-      <Sidebar />
       <StaticCard id={parseInt(id, 10)} />
       {idList
         ?.filter((itemId) => itemId !== idList[0])
