@@ -74,7 +74,7 @@ const AnimatedCard: React.FC<number> = ({ id }) => {
   const [spotlightStyle, setSpotlightStyle] = useSpring(() => ({
     opacity: 0,
     background:
-      'radial-gradient(circle at 0px 0px, rgba(116, 128, 255, 0.25), transparent 40%)',
+      'radial-gradient(circle at 0px 0px, rgba(0, 0, 0, 0.25), transparent 40%)',
     config: { duration: 1800 },
   }))
   const [props, set] = useSpring(() => ({
