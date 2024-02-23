@@ -21,7 +21,7 @@ const Accordian: React.FC<number> = ({ id }) => {
     console.log('<Accordian.tsx> The Card Props are: ', cardProps)
   }, [id])
   return (
-    <div className="flex justify-center w-full">
+    <div className="flex justify-center w-full w-30 lg-w-100">
       <div id="accordian" className="collapse bg-base-200 w-3/4">
         <input type="checkbox" className="peer" />
         <div className="collapse-title text-xl font-medium">
