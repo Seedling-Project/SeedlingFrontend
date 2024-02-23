@@ -10,7 +10,6 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/classes" element={<Classes />} />
-        <Route path="/research" element={<Research />} />
         <Route path="/classes/:id" element={<Classes />} />
       </Routes>
 
