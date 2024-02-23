@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
-import Accordian from './Accordian'
+import Accordion from './Accordion'
 import AnimatedCard from './AnimatedCard'
 import ApiHandler from './ApiHandler'
 import LoadingScreen from './LoadingScreen'
