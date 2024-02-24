@@ -33,10 +33,10 @@ const Accordion: React.FC<number> = ({ id }) => {
   }, [id])
 
   return (
-    <div className="flex justify-center w-full w-30 lg-w-100 ">
+    <div className="flex justify-center w-full  w-30 lg-w-100 ">
       <div
         id="accordian"
-        className="collapse bg-base-200 w-3/4 border-b-2 border-black "
+        className="collapse bg-base-200 w-3/4  border-b-2 border-black "
       >
         <input type="checkbox" className="peer" />
 
@@ -45,9 +45,9 @@ const Accordion: React.FC<number> = ({ id }) => {
             id="classDocumentLink"
             href={cardProps?.documentUrls}
             target="_blank"
-            className=" text-black visited:text-gray-800 "
+            className=" text-black visited:text-gray-800 mb-10"
           >
-            <div className="collapse-title text-xl font-medium">
+            <div className="collapse-title text-xl font-medium ">
               <i className="fas fa-angle-down mr-2"></i>
               {cardProps?.title}
             </div>
