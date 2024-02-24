@@ -62,17 +62,17 @@ const StaticCard: React.FC<number> = ({ id }) => {
     <MathJaxContext config={config}>
       <animated.div
         ref={ref}
-        className="bg-white text-gray-800 max-w-3xl mx-auto mt-5 mb-8 p-8 rounded-lg shadow-lg shadow-top-bottom"
+        className="bg-white charter text-gray-800 max-w-3xl mx-auto mt-5 mb-8 p-8 rounded-lg shadow-lg shadow-top-bottom"
       >
-        <div className="text-center mb-4">
-          <h1 className="text-3xl font-bold mb-2 font-times">
+        <div className="text-center mb-4 charter">
+          <h1 className="text-3xl font-bold mb-2 charter">
             {cardProps?.title}
           </h1>
-          <p className="text-md mb-4 font-accent">
+          <p className="text-md mb-4 font-accent charter text-lg">
             {`${cardProps?.author}- ${cardProps?.date}`}
           </p>
         </div>
-        <div className="text-left font-body">
+        <div className="text-left charter text-lg">
           {/* Render each block */}
           {cardProps?.body.map((block: any, index: number) => (
             <React.Fragment key={index}>{renderBlock(block)}</React.Fragment>
