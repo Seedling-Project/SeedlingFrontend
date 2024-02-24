@@ -22,6 +22,7 @@ const Accordion: React.FC<number> = ({ id }) => {
       setWindowWidth(window.innerWidth)
     }
 
+    // responsive function
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
@@ -35,7 +36,7 @@ const Accordion: React.FC<number> = ({ id }) => {
     <div className="flex justify-center w-full w-30 lg-w-100 ">
       <div
         id="accordian"
-        className="collapse bg-base-200 w-3/4 border-b-2 border-black"
+        className="collapse bg-base-200 w-3/4 border-b-2 border-black "
       >
         <input type="checkbox" className="peer" />
 
