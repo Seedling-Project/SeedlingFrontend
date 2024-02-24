@@ -45,7 +45,7 @@ const Navbar = () => {
                   <Link to="/research">Research (UG)</Link>
                 </li>
                 <li>
-                  <Link to="/research">Miscellaneous</Link>
+                  <Link to="/miscellaneous">Miscellaneous</Link>
                 </li>
               </ul>
             </div>
