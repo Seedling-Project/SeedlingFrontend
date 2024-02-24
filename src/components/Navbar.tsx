@@ -1,6 +1,8 @@
 import { Link, Route, Routes } from 'react-router-dom'
 import Home from './Home'
 import Curriculum from './Curriculum'
+import Miscellaneous from './Miscellaneous'
+import Research from './Research'
 
 const Navbar = () => {
   return (
@@ -40,7 +42,7 @@ const Navbar = () => {
                   <Link to="/curriculum">Curriculum</Link>
                 </li>
                 <li>
-                  <Link to="/transfer">Research (UG)</Link>
+                  <Link to="/research">Research (UG)</Link>
                 </li>
                 <li>
                   <Link to="/miscellaneous">Miscellaneous</Link>
@@ -81,10 +83,10 @@ const Navbar = () => {
                 <Link to="/curriculum/*">Curriculum</Link>
               </li>
               <li className="font-accent">
-                <Link to="/transfer">Research (UG)</Link>
+                <Link to="/research">Research (UG)</Link>
               </li>
               <li className="font-accent">
-                <Link to="/transfer">Miscellaneous</Link>
+                <Link to="/miscellaneous">Miscellaneous</Link>
               </li>
             </ul>
             <button className="btn btn-ghost btn-circle ">
@@ -110,8 +112,8 @@ const Navbar = () => {
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Home />} />
           <Route path="/curriculum/*" element={<Curriculum />} />
-          <Route path="/research" element={<Home />} />
-          <Route path="/other" element={<Home />} />
+          <Route path="/research" element={<Research />} />
+          <Route path="/miscellaneous" element={<Miscellaneous />} />
         </Routes>
       </>
     </>
