@@ -1,18 +1,14 @@
-
-
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
- 
-  
 }
 
 @font-face {
   font-family: 'Charter';
   src: url(/public/Charter\ Regular.ttf) format('truetype');
-  font-weight:400;
+  font-weight: 400;
   font-style: normal;
 }
 @font-face {
@@ -22,9 +18,8 @@
   font-style: normal;
 }
 
-
-body{
-  font-family:charter;
+body {
+  font-family: charter;
 }
 br {
   display: block !important;
@@ -121,7 +116,7 @@ a:active {
 }
 
 .card-container {
-  max-height: 25rem;
+  max-height: 29rem;
   overflow: hidden;
   position: relative;
   cursor: pointer; /* Indicates the card is clickable */
