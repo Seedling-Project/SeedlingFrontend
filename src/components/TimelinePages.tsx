@@ -7,7 +7,7 @@ import LoadingScreen from './LoadingScreen'
 import Sidebar from './Sidebar'
 import StaticCard from './StaticCard'
 
-export function Classes() {
+export function TimelinePages() {
   const location = useLocation()
   const { id } = useParams() // Provide a fallback object to avoid destructuring undefined
   const courseCode = location.state?.courseCode
@@ -68,9 +68,9 @@ export function Classes() {
       <StaticCard id={parseInt(id, 10)} />
       {idList
         ?.filter((itemId) => itemId !== idList[0])
-        .map((itemId) => <Accordion key={itemId} id={itemId} />)}
+        .map((itemId) => <Accordian key={itemId} id={itemId} />)}
     </div>
   )
 }
 
-export default Classes
+export default TimelinePages

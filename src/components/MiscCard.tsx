@@ -32,7 +32,8 @@ const calc = (x: number, y: number, rect: DOMRect) => {
   }
 }
 
-const AnimatedCard: React.FC<number> = ({ id }) => {
+const MiscCard: React.FC<number> = ({ id }) => {
+  const [isExpanded, setIsExpanded] = useState(false)
   const [cardProps, setCardProps] = useState()
   console.log('<AnimatedCard.tsx> The ID is: ', id)
 
@@ -98,59 +99,71 @@ const AnimatedCard: React.FC<number> = ({ id }) => {
     }
   }
 
+  const toggleExpand = () => setIsExpanded(!isExpanded)
+
   return (
-    <MathJaxContext config={config}>
-      <animated.div
-        ref={ref}
-        className="bg-white text-gray-800 max-w-3xl mx-auto my-8 p-8 rounded-lg shadow-lg"
-        style={{
-          transform: props.xys.interpolate(
-            (x, y, s) =>
-              `perspective(1000px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`,
-          ),
-          zIndex: 1,
-        }}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={() => setOpacity({ value: 1 })}
-        onMouseLeave={() => {
-          set({ xys: [0, 0, 1] })
-          setSpotlightStyle({ opacity: 0 })
-        }}
-      >
-        <animated.div
-          className="absolute top-0 left-0 right-0 bottom-0 rounded-lg pointer-events-none"
-          style={spotlightStyle}
-        />
-        <div className="text-center mb-4">
-          <h1 className="text-3xl font-bold mb-2 font-times">
-            {cardProps?.title}
-          </h1>
-          <p className="text-md mb-4 font-accent">
-            {`${cardProps?.author} - ${cardProps?.date}`}
-          </p>
-        </div>
-        <div className="text-left font-body">
-          {/* Render each block */}
-          {cardProps?.body.map((block: any, index: number) => (
-            <React.Fragment key={index}>{renderBlock(block)}</React.Fragment>
-          ))}
-        </div>
-        <div>
-          <div>
-            {cardProps?.imageUrls.map((imageUrl, index) => (
-              <img key={index} src={imageUrl} alt="" />
-            ))}
-            {/* Iterate over enriched document URLs if they exist */}
-            {cardProps?.documentUrls.map((documentUrl, index) => (
-              <a key={index} href={documentUrl}>
-                View Document
-              </a>
-            ))}
-          </div>
-        </div>
-      </animated.div>
-    </MathJaxContext>
+    <div
+      onClick={toggleExpand}
+      className={`card-container ${isExpanded ? 'expanded' : ''}`}
+    >
+      <div className={`content ${isExpanded ? '' : 'truncate'}`}>
+        <MathJaxContext config={config}>
+          <animated.div
+            ref={ref}
+            className="bg-white text-gray-800 max-w-3xl mx-auto my-8 p-8 rounded-lg shadow-lg"
+            style={{
+              transform: props.xys.interpolate(
+                (x, y, s) =>
+                  `perspective(1000px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`,
+              ),
+              zIndex: 1,
+            }}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setOpacity({ value: 1 })}
+            onMouseLeave={() => {
+              set({ xys: [0, 0, 1] })
+              setSpotlightStyle({ opacity: 0 })
+            }}
+          >
+            <animated.div
+              className="absolute top-0 left-0 right-0 bottom-0 rounded-lg pointer-events-none"
+              style={spotlightStyle}
+            />
+            <div className="text-center mb-4">
+              <h1 className="text-3xl font-bold mb-2 font-times">
+                {cardProps?.title}
+              </h1>
+              <p className="text-md mb-4 font-accent">
+                {`${cardProps?.author} - ${cardProps?.date}`}
+              </p>
+            </div>
+            <div className="text-left font-body">
+              {/* Render each block */}
+              {cardProps?.body.map((block: any, index: number) => (
+                <React.Fragment key={index}>
+                  {renderBlock(block)}
+                </React.Fragment>
+              ))}
+            </div>
+            <div>
+              <div>
+                {cardProps?.imageUrls.map((imageUrl, index) => (
+                  <img key={index} src={imageUrl} alt="" />
+                ))}
+                {/* Iterate over enriched document URLs if they exist */}
+                {cardProps?.documentUrls.map((documentUrl, index) => (
+                  <a key={index} href={documentUrl}>
+                    View Document
+                  </a>
+                ))}
+              </div>
+            </div>
+          </animated.div>
+        </MathJaxContext>
+      </div>
+      {!isExpanded && <div className="card-fade"></div>}
+    </div>
   )
 }
 
-export default AnimatedCard
+export default MiscCard
