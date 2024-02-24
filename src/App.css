@@ -1,8 +1,30 @@
+
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+ 
+  
+}
+
+@font-face {
+  font-family: 'Charter';
+  src: url(/public/Charter\ Regular.ttf) format('truetype');
+  font-weight:400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Charter';
+  src: url('/public/Charter\ Bold.ttf') format('truetype');
+  font-weight: bold; /* or 700 */
+  font-style: normal;
+}
+
+
+body{
+  font-family:charter;
 }
 br {
   display: block !important;
@@ -37,18 +59,18 @@ p {
 }
 /* Unvisited links */
 a:link {
-  color: rgb(0, 0, 0); /* Change to your preferred color */
+  color: #006442; /* Change to your preferred color */
   text-decoration: none; /* Removes underline, add if you prefer */
 }
 
 /* Visited links */
 a:visited {
-  color: rgb(0, 0, 0); /* Change to your preferred color */
+  color: #006442; /* Change to your preferred color */
 }
 
 /* Mouse over links */
 a:hover {
-  color: rgb(0, 0, 0); /* Change to your preferred color */
+  color: #006442; /* Change to your preferred color */
   text-decoration: underline; /* Adds underline on hover */
 }
 
@@ -99,7 +121,7 @@ a:active {
 }
 
 .card-container {
-  max-height: 28rem;
+  max-height: 25rem;
   overflow: hidden;
   position: relative;
   cursor: pointer; /* Indicates the card is clickable */

@@ -45,7 +45,7 @@ const Accordion: React.FC<number> = ({ id }) => {
             id="classDocumentLink"
             href={cardProps?.documentUrls}
             target="_blank"
-            className=" text-black visited:text-gray-800 mb-10"
+            className=" mb-10"
           >
             <div className="collapse-title text-xl font-medium ">
               <i className="fas fa-angle-down mr-2"></i>
