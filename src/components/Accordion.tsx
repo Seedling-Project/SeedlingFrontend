@@ -66,18 +66,6 @@ const Accordion: React.FC<number> = ({ id }) => {
             />
           </div>
         ) : null}
-
-        <div className="collapse-title text-xl font-medium">
-          <i className="fas fa-angle-down mr-2"></i>
-          {cardProps?.title}
-        </div>
-        <div className="collapse-content flex items-center w-full overflow-hidden">
-          <iframe
-            src={cardProps?.documentUrls}
-            title={cardProps?.title}
-            className=" border-none aspect-video"
-          />
-        </div>
       </div>
     </div>
   )
