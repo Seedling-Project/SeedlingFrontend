@@ -33,35 +33,22 @@ const CardAccordion: React.FC<number> = ({ id }) => {
   }, [id])
 
   return (
-    <div className="flex justify-center w-full  w-30 lg-w-100 ">
+    <div className="flex justify-center w-full w-30 lg:w-100">
       <div
-        id="accordian"
-        className="collapse bg-base-200 w-3/4  border-b-2 border-black "
+        id="accordion"
+        className="collapse bg-base-200 w-3/4 border-b-2 border-black"
       >
         <input type="checkbox" className="peer" />
-
-        {windowWidth < 1096 ? (
-          <a
-            id="classDocumentLink"
-            href={cardProps?.documentUrls}
-            target="_blank"
-            className=" text-black visited:text-gray-800 mb-10"
-          >
-            <div className="collapse-title text-xl font-medium ">
-              <i className="fas fa-angle-down mr-2"></i>
-              {cardProps?.title}
-            </div>
-          </a>
-        ) : (
-          <div className="collapse-title text-xl font-medium">
-            <i className="fas fa-angle-down mr-2"></i>
-            {cardProps?.title}
-          </div>
-        )}
-        {windowWidth > 1096 ? (
-          <div className="collapse-title text-xl font-medium ">
-            <i className="fas fa-angle-down mr-2"></i>
-            {cardProps?.title}
+        <div className="collapse-title text-xl font-medium">
+          <i className="fas fa-angle-down mr-2"></i>
+          {cardProps?.title || 'Loading...'}
+        </div>
+        {windowWidth > 1096 && cardProps ? (
+          <div className="collapse-content flex items-center justify-center w-full overflow-hidden p-4">
+            {/* Render StaticCard with the fetched data */}
+            {cardProps?.body.map((block: any, index: number) => (
+              <StaticCard key={index} id={id} />
+            ))}
           </div>
         ) : null}
       </div>
