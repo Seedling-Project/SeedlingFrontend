@@ -39,11 +39,13 @@ const CardAccordion: React.FC<number> = ({ id }) => {
         className="collapse bg-base-200 w-3/4 border-b-2 border-black"
       >
         <input type="checkbox" className="peer" />
+
         <div className="collapse-title text-xl font-medium">
           <i className="fas fa-angle-down mr-2"></i>
           {cardProps?.title || 'Loading...'}
         </div>
-        {windowWidth > 1096 && cardProps ? (
+
+        {cardProps ? (
           <div className="collapse-content flex items-center justify-center w-full overflow-hidden p-4">
             {/* Render StaticCard with the fetched data */}
             {cardProps?.body.map((block: any, index: number) => (

@@ -33,7 +33,7 @@ const calc = (x: number, y: number, rect: DOMRect) => {
 }
 
 const MiscCard: React.FC<number> = ({ id }) => {
-  const [isExpanded, setIsExpanded] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(window.innerWidth < 1280)
   const [cardProps, setCardProps] = useState()
   console.log('<AnimatedCard.tsx> The ID is: ', id)
 
@@ -70,6 +70,20 @@ const MiscCard: React.FC<number> = ({ id }) => {
     }
   }, [])
 
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth)
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+      const newWidth = window.innerWidth
+
+      setIsExpanded(newWidth < 1280)
+    }
+
+    // responsive function
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   const ref = useRef<HTMLDivElement>(null)
   const [opacity, setOpacity] = useSpring(() => ({ value: 0 }))
   const [spotlightStyle, setSpotlightStyle] = useSpring(() => ({
@@ -99,7 +113,11 @@ const MiscCard: React.FC<number> = ({ id }) => {
     }
   }
 
-  const toggleExpand = () => setIsExpanded(!isExpanded)
+  const toggleExpand = () => {
+    if (windowWidth >= 1280) {
+      setIsExpanded(!isExpanded)
+    }
+  }
 
   return (
     <div
