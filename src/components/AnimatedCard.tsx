@@ -122,14 +122,14 @@ const AnimatedCard: React.FC<number> = ({ id }) => {
           style={spotlightStyle}
         />
         <div className="text-center mb-4">
-          <h1 className="text-3xl font-bold mb-2 font-times">
+          <h1 className="text-3xl font-bold mb-2 charter">
             {cardProps?.title}
           </h1>
-          <p className="text-md mb-4 font-accent">
+          <p className="text-md mb-4 font-accent ">
             {`${cardProps?.author} - ${cardProps?.date}`}
           </p>
         </div>
-        <div className="text-left font-body">
+        <div className="text-left charter text-xl">
           {/* Render each block */}
           {cardProps?.body.map((block: any, index: number) => (
             <React.Fragment key={index}>{renderBlock(block)}</React.Fragment>

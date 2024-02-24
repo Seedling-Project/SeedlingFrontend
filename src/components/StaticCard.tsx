@@ -62,7 +62,7 @@ const StaticCard: React.FC<number> = ({ id }) => {
     <MathJaxContext config={config}>
       <animated.div
         ref={ref}
-        className="bg-white text-gray-800 max-w-3xl mx-auto mt-20 mb-8 p-8 rounded-lg shadow-lg"
+        className="bg-white text-gray-800 max-w-3xl mx-auto mt-5 mb-8 p-8 rounded-lg shadow-lg shadow-top-bottom"
       >
         <div className="text-center mb-4">
           <h1 className="text-3xl font-bold mb-2 font-times">
