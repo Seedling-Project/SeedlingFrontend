@@ -138,7 +138,7 @@ const MiscCard: React.FC<number> = ({ id }) => {
               <h1 className="text-xl font-bold mb-2 font-times">
                 {cardProps?.title}
               </h1>
-              <p className="text-sm mb-4 font-accent">
+              <p className="text-sm font-bold mb-4 font-accent">
                 {`${cardProps?.author} - ${cardProps?.date}`}
               </p>
               {/* Render each block */}
