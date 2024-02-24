@@ -32,10 +32,6 @@ const calc = (x: number, y: number, rect: DOMRect) => {
   }
 }
 
-const [disableAnimation, setDisableAnimation] = useState(
-  window.innerWidth < 1280,
-) // Disable animation for mobile devices
-
 const MiscCard: React.FC<number> = ({ id }) => {
   const [isExpanded, setIsExpanded] = useState(window.innerWidth < 1280)
   const [cardProps, setCardProps] = useState()
@@ -88,12 +84,6 @@ const MiscCard: React.FC<number> = ({ id }) => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  const toggleExpand = () => {
-    if (windowWidth >= 1280) {
-      setIsExpanded(!isExpanded)
-    }
-  }
-
   const ref = useRef<HTMLDivElement>(null)
   const [opacity, setOpacity] = useSpring(() => ({ value: 0 }))
   const [spotlightStyle, setSpotlightStyle] = useSpring(() => ({
@@ -123,14 +113,11 @@ const MiscCard: React.FC<number> = ({ id }) => {
     }
   }
 
-  useEffect(() => {
-    const handleResize = () => {
-      setDisableAnimation(window.innerWidth < 768) // Update based on mobile width
+  const toggleExpand = () => {
+    if (windowWidth >= 1280) {
+      setIsExpanded(!isExpanded)
     }
-
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  }
 
   return (
     <div
