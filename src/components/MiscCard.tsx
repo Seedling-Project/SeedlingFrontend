@@ -32,6 +32,10 @@ const calc = (x: number, y: number, rect: DOMRect) => {
   }
 }
 
+const [disableAnimation, setDisableAnimation] = useState(
+  window.innerWidth < 1280,
+) // Disable animation for mobile devices
+
 const MiscCard: React.FC<number> = ({ id }) => {
   const [isExpanded, setIsExpanded] = useState(window.innerWidth < 1280)
   const [cardProps, setCardProps] = useState()
@@ -118,6 +122,15 @@ const MiscCard: React.FC<number> = ({ id }) => {
       return { __html: htmlString }
     }
   }
+
+  useEffect(() => {
+    const handleResize = () => {
+      setDisableAnimation(window.innerWidth < 768) // Update based on mobile width
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   return (
     <div
