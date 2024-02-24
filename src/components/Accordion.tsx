@@ -15,17 +15,18 @@ const Accordion: React.FC<number> = ({ id }) => {
       console.error('Error in fetching data:', error)
     }
   }
-
+  // // responsive function
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth)
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth)
     }
 
-    // responsive function
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  //end of func
 
   useEffect(() => {
     fetchData(id)
@@ -45,7 +46,7 @@ const Accordion: React.FC<number> = ({ id }) => {
             id="classDocumentLink"
             href={cardProps?.documentUrls}
             target="_blank"
-            className=" mb-10"
+            className=" text-black visited:text-gray-800 mb-10"
           >
             <div className="collapse-title text-xl font-medium ">
               <i className="fas fa-angle-down mr-2"></i>
