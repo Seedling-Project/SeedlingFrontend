@@ -37,18 +37,18 @@ p {
 }
 /* Unvisited links */
 a:link {
-  color: blue; /* Change to your preferred color */
+  color: rgb(0, 0, 0); /* Change to your preferred color */
   text-decoration: none; /* Removes underline, add if you prefer */
 }
 
 /* Visited links */
 a:visited {
-  color: purple; /* Change to your preferred color */
+  color: rgb(0, 0, 0); /* Change to your preferred color */
 }
 
 /* Mouse over links */
 a:hover {
-  color: red; /* Change to your preferred color */
+  color: rgb(0, 0, 0); /* Change to your preferred color */
   text-decoration: underline; /* Adds underline on hover */
 }
 

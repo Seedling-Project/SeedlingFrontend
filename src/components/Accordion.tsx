@@ -42,9 +42,10 @@ const Accordion: React.FC<number> = ({ id }) => {
 
         {windowWidth < 1096 ? (
           <a
+            id="classDocumentLink"
             href={cardProps?.documentUrls}
             target="_blank"
-            className=" text-gray:800 visited:text-gray-800"
+            className=" text-black visited:text-gray-800 "
           >
             <div className="collapse-title text-xl font-medium">
               <i className="fas fa-angle-down mr-2"></i>
@@ -63,7 +64,7 @@ const Accordion: React.FC<number> = ({ id }) => {
             <iframe
               src={cardProps?.documentUrls}
               title={cardProps?.title}
-              className=" w-full h-full min-h-[75vh] min-w-full border-none aspect-video"
+              className=" w-full h-full min-h-[75vh] min-w-full border-none aspect-video "
             />
           </div>
         ) : null}
