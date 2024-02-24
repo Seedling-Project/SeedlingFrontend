@@ -63,6 +63,10 @@ export function Classes() {
     }
   }, [id, courseCode])
 
+  if (loading) {
+    return <LoadingScreen />
+  }
+
   return (
     <div id="top-of-page">
       <StaticCard id={parseInt(id, 10)} />
