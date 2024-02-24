@@ -16,6 +16,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        charter: ['Charter'],
         times: ['Times New Roman', 'serif'],
         franklin: ['Franklin Gothic', 'Arial', 'sans-serif'],
         body: ['Merriweather', 'serif'],
