@@ -3,6 +3,7 @@ import Home from './Home'
 import Curriculum from './Curriculum'
 import Miscellaneous from './Miscellaneous'
 import Research from './Research'
+import Transfer from './Transfer'
 
 const Navbar = () => {
   return (
@@ -110,7 +111,7 @@ const Navbar = () => {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<Home />} />
+          <Route path="/transfer" element={<Transfer />} />
           <Route path="/curriculum/*" element={<Curriculum />} />
           <Route path="/research" element={<Research />} />
           <Route path="/miscellaneous" element={<Miscellaneous />} />
