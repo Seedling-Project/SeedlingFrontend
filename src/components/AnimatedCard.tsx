@@ -129,7 +129,7 @@ const AnimatedCard: React.FC<number> = ({ id }) => {
             {`${cardProps?.author} - ${cardProps?.date}`}
           </p>
         </div>
-        <div className="text-left charter text-lg">
+        <div className="text-left text-md charter   md:text-lg">
           {/* Render each block */}
           {cardProps?.body.map((block: any, index: number) => (
             <React.Fragment key={index}>{renderBlock(block)}</React.Fragment>
