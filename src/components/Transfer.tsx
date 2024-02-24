@@ -3,6 +3,7 @@ import { useLocation, useParams } from 'react-router-dom'
 import Accordion from './Accordion'
 import AnimatedCard from './AnimatedCard'
 import ApiHandler from './ApiHandler'
+import CardAccordion from './CardAccordion'
 import LoadingScreen from './LoadingScreen'
 import Sidebar from './Sidebar'
 import StaticCard from './StaticCard'
@@ -46,7 +47,7 @@ const Transfer = () => {
       <StaticCard id="28" />
       {idList
         ?.filter((itemId) => itemId !== idList[0])
-        .map((itemId) => <Accordion key={itemId} id={itemId} />)}
+        .map((itemId) => <CardAccordion key={itemId} id={itemId} />)}
     </div>
   )
 }
