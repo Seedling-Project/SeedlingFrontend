@@ -99,7 +99,7 @@ a:active {
 }
 
 .card-container {
-  max-height: 25rem;
+  max-height: 28rem;
   overflow: hidden;
   position: relative;
   cursor: pointer; /* Indicates the card is clickable */
