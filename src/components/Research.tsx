@@ -50,11 +50,24 @@ const Research = () => {
 
   return (
     <>
-      <div>
-        {idList?.map((itemId) => <MiscCard key={itemId} id={itemId} />)}
+      <div id="row" className="flex justify-around w-full">
+        <div id="leftCol" className="w-1/3 px-2">
+          <MiscCard id="25" />
+        </div>
+        <div id="middleCol" className="w-1/3 px-2">
+          <MiscCard id="27" />
+        </div>
+        <div id="rightCol" className="w-1/3 px-2">
+          <MiscCard id="36" />
+        </div>
       </div>
-      <div>
-        <MiscCard id="39" />
+      <div id="row" className="flex justify-around w-full">
+        <div id="leftCol" className="w-1/3 px-2">
+          <MiscCard id="37" />
+        </div>
+        <div id="middleCol" className="w-1/3 px-2">
+          <MiscCard id="38" />
+        </div>
       </div>
     </>
   )
