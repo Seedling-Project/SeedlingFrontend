@@ -45,6 +45,7 @@ export function Classes() {
     21: 'BIO-101',
     22: 'BOT-101',
     23: 'ZOOL-101',
+    24: 'PHYS-165',
   }
 
   useEffect(() => {
