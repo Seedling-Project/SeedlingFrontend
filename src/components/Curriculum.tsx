@@ -130,12 +130,21 @@ const Curriculum: React.FC = () => {
             </tr>
           </thead>
           <tbody>
+            <tr
+              className="hover:cursor-pointer"
+              onClick={() => handleRowClick('/classes/24', 'PHYS-165:')}
+            >
+              <th>1</th>
+              <td>PHYS-165: Introductory Physics</td>
+              <td>54%</td>
+            </tr>
             {/* row 1 */}
+
             <tr
               className="hover:cursor-pointer"
               onClick={() => handleRowClick('/classes/14', 'PHYS-101:')}
             >
-              <th>1</th>
+              <th>2</th>
               <td>PHYS-101: Mechanics</td>
               <td>67%</td>
             </tr>
@@ -144,7 +153,7 @@ const Curriculum: React.FC = () => {
               className="hover:cursor-pointer"
               onClick={() => handleRowClick('/classes/15', 'PHYS-102:')}
             >
-              <th>2</th>
+              <th>3</th>
               <td>PHYS-102: Waves, Thermodynamics, Optics</td>
               <td>79%</td>
             </tr>
@@ -153,7 +162,7 @@ const Curriculum: React.FC = () => {
               className="hover:cursor-pointer"
               onClick={() => handleRowClick('/classes/16', 'PHYS-103:')}
             >
-              <th>3</th>
+              <th>4</th>
               <td>PHYS-103: Electricity, Magnetism, and Modern Physics</td>
               <td>77%</td>
             </tr>
