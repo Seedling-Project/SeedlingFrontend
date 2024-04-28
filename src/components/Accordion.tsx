@@ -41,7 +41,7 @@ const Accordion: React.FC<number> = ({ id }) => {
       >
         <input type="checkbox" className="peer" />
 
-        {windowWidth < 1096 ? (
+        {windowWidth <= 1200 ? (
           <a
             id="classDocumentLink"
             href={cardProps?.documentUrls}
@@ -60,7 +60,7 @@ const Accordion: React.FC<number> = ({ id }) => {
           </div>
         )}
 
-        {windowWidth > 1096 ? (
+        {windowWidth >= 1201 ? (
           <div className="collapse-content flex items-center w-full overflow-hidden ">
             <iframe
               src={cardProps?.documentUrls}
