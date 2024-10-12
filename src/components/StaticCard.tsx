@@ -57,6 +57,10 @@ const StaticCard: React.FC<number> = ({ id }) => {
 
   const ref = useRef<HTMLDivElement>(null)
   const [opacity, setOpacity] = useSpring(() => ({ value: 0 }))
+  const [hoverProps, setHoverProps] = useSpring(() => ({
+    transform: 'scale(1)',
+    config: { mass: 1, tension: 200, friction: 60 }, // Adjusted values to reduce bounciness
+  }))
 
   return (
     <MathJaxContext config={config}>
@@ -64,6 +68,7 @@ const StaticCard: React.FC<number> = ({ id }) => {
         ref={ref}
         className="bg-white charter text-gray-800 max-w-3xl mx-auto mt-5 mb-8 p-8 rounded-lg shadow-lg shadow-top-bottom"
       >
+        style = {hoverProps}
         <div className="text-center mb-4 charter">
           <h1 className="text-3xl font-bold mb-2 charter">
             {cardProps?.title}

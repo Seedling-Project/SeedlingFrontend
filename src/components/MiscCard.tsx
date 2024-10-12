@@ -94,7 +94,7 @@ const MiscCard: React.FC<number> = ({ id }) => {
   }))
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1],
-    config: { mass: 5, tension: 360, friction: 40 },
+    config: { mass: 1, tension: 200, friction: 40 },
   }))
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = ref.current?.getBoundingClientRect()
