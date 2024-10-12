@@ -67,8 +67,8 @@ const StaticCard: React.FC<number> = ({ id }) => {
       <animated.div
         ref={ref}
         className="bg-white charter text-gray-800 max-w-3xl mx-auto mt-5 mb-8 p-8 rounded-lg shadow-lg shadow-top-bottom"
+        style={hoverProps}
       >
-        style = {hoverProps}
         <div className="text-center mb-4 charter">
           <h1 className="text-3xl font-bold mb-2 charter">
             {cardProps?.title}
